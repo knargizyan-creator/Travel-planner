@@ -1,16 +1,18 @@
-Travel Planner v13 — Photo Luxury Dashboard
+Travel Planner v14 — Mobile First
 
-MAIN CHANGES
-- Real travel photography on the main hero.
-- Photo project cards for all trips.
-- Photo project header when a trip is opened.
-- New quick status cards: flights, hotels, visa and documents.
-- Luxury navy / ivory / gold visual system.
-- All existing shared-state, budget, editing, visa, search and project features preserved.
+Designed specifically to fix the iPhone experience.
 
-PHOTO SOURCES
-- Travel photos are loaded from Unsplash CDN.
-- The application still works if a photo is temporarily unavailable; only the decorative photo may not load.
+What changed:
+- The huge onboarding guide is collapsed on mobile.
+- Other pages no longer repeat the whole home dashboard above their content.
+- Mobile home starts with the current trip photo, money summary, quick trip status and trip cards.
+- New bottom navigation: Trips / Route / Budget / Search / More.
+- Calculator, rates, account and help moved into a clean More bottom sheet.
+- Project pages, forms, route, budget, search and modals are adapted for one-handed mobile use.
+- Modal forms open as bottom sheets on phones.
+- Input fields use iPhone-friendly sizes so Safari does not zoom into forms.
+- Photo-based luxury design from v13 is preserved.
+- Desktop layout and all existing shared database functionality are preserved.
 
-UPDATE
-Unzip and upload the CONTENTS of this folder to the repository root, replacing existing files.
+Update method:
+Unzip and upload the CONTENTS of this folder to the GitHub repository root, replacing the old files.

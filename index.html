@@ -464,9 +464,577 @@ body{background:
   .guideSteps{grid-template-columns:1fr}
 }
 
-</style></head><body>
+
+/* ===== V14 MOBILE-FIRST APP EXPERIENCE ===== */
+.mobileGuideToggle,.mobileMore{display:none}
+
+@media(max-width:760px){
+  html{scroll-behavior:smooth}
+  body{
+    background:#f7f3eb;
+    padding-bottom:calc(76px + env(safe-area-inset-bottom));
+    -webkit-text-size-adjust:100%;
+  }
+  body.mobile-more-open{overflow:hidden}
+
+  /* App header */
+  .top{
+    height:64px!important;
+    padding:0 16px!important;
+    background:linear-gradient(135deg,#071d31,#0c3654)!important;
+    border:0!important;
+    box-shadow:0 7px 22px rgba(6,27,45,.16);
+  }
+  .top h1{
+    color:#fff!important;
+    font-size:25px!important;
+    line-height:1!important;
+    max-width:58%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .top h1 span{display:none!important}
+  .topRight{gap:9px!important}
+  .topRight #userName{
+    display:block!important;
+    color:#fff;
+    font-size:13px;
+    font-weight:750;
+    max-width:116px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .avatar{
+    width:38px!important;height:38px!important;
+    flex:0 0 38px;
+    background:linear-gradient(135deg,#efd58e,#b68531)!important;
+    box-shadow:0 4px 14px rgba(208,166,82,.28)
+  }
+
+  /* True mobile page structure */
+  .content{
+    padding:12px 12px 18px!important;
+    max-width:none!important;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* On non-home pages do NOT repeat the whole dashboard */
+  body:not([data-view="trips"]) #mobileGuideToggle,
+  body:not([data-view="trips"]) #simpleGuide,
+  body:not([data-view="trips"]) .actionGrid,
+  body:not([data-view="trips"]) .content>.helpStrip,
+  body:not([data-view="trips"]) #hero,
+  body:not([data-view="trips"]) .content>.grid4,
+  body:not([data-view="trips"]) #dashboardSnapshot,
+  body:not([data-view="trips"]) .content>.tabs{
+    display:none!important;
+  }
+
+  /* Home order: useful content first */
+  #hero{order:1}
+  .content>.grid4{order:2}
+  #dashboardSnapshot{order:3}
+  .content>.layout{order:4}
+  .actionGrid{order:5}
+  #mobileGuideToggle{order:6}
+  #simpleGuide{order:7}
+  .content>.helpStrip{order:8}
+  .content>.tabs{order:9}
+
+  /* Current trip becomes the visual home hero */
+  .hero{
+    min-height:228px!important;
+    border-radius:20px!important;
+    padding:19px!important;
+    justify-content:flex-end!important;
+    margin-bottom:10px;
+    background-position:center!important;
+  }
+  .hero:before{
+    background:linear-gradient(180deg,rgba(3,17,31,.08) 12%,rgba(3,17,31,.30) 47%,rgba(3,17,31,.90) 100%)!important
+  }
+  .hero h2{
+    font-size:29px!important;
+    line-height:1.03!important;
+    margin:0 0 8px!important;
+    max-width:100%!important;
+  }
+  .hero .meta{
+    font-size:12px!important;
+    gap:7px 12px!important;
+    line-height:1.4;
+  }
+  .hero .tag{
+    margin-top:11px!important;
+    padding:7px 10px!important;
+    font-size:10px!important;
+  }
+
+  /* Financial summary: 2x2, compact */
+  .grid4{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+    margin:0 0 10px!important;
+  }
+  .metric{
+    min-height:92px;
+    padding:13px!important;
+    border-radius:15px!important;
+  }
+  .metric label{font-size:10px!important}
+  .metric strong{font-size:20px!important;margin-top:4px!important;padding-right:28px}
+  .metric small{font-size:10px!important}
+  .metric .luxIcon{
+    width:27px!important;height:27px!important;
+    right:9px!important;top:9px!important;
+    border-radius:9px!important;font-size:13px!important;
+  }
+
+  /* Quick statuses: horizontal cards; thumb-friendly and space efficient */
+  .snapshotGrid{
+    display:flex!important;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:9px!important;
+    margin:0 -12px 11px!important;
+    padding:0 12px 4px!important;
+    scrollbar-width:none;
+  }
+  .snapshotGrid::-webkit-scrollbar{display:none}
+  .snapshotCard{
+    flex:0 0 76%;
+    min-height:92px!important;
+    padding:14px 14px 13px 58px!important;
+    border-radius:15px!important;
+    scroll-snap-align:start;
+  }
+  .snapshotIcon{
+    left:12px!important;top:14px!important;
+    width:35px!important;height:35px!important;
+    border-radius:11px!important;font-size:17px!important;
+  }
+  .snapshotCard b{font-size:12px!important;margin-bottom:5px!important}
+  .snapshotCard strong{font-size:14px!important}
+  .snapshotCard small{font-size:10px!important}
+
+  /* Trips card is the core content */
+  .layout{display:block!important}
+  .right{display:none!important}
+  #tripsView{
+    border:0!important;
+    box-shadow:none!important;
+    background:transparent!important;
+  }
+  #tripsView>.helpStrip{display:none!important}
+  #tripsView .cardHead{
+    padding:8px 2px 10px!important;
+    border:0!important;
+  }
+  #tripsView .cardHead h3{font-size:22px!important}
+  #tripsView .cardHead .btn{
+    min-height:40px;
+    padding:9px 13px!important;
+  }
+  #tripsView .cardBody{padding:0!important}
+  #tripList.tripCards{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:11px!important;
+  }
+  #tripList .tripCard{
+    border-radius:18px!important;
+    box-shadow:0 9px 26px rgba(18,39,56,.07)!important;
+  }
+  .tripPhoto{height:170px!important}
+  .tripPhotoTitle{font-size:21px!important}
+  .tripCardBody{padding:13px!important}
+  .tripMiniStats{margin:9px 0 10px!important}
+  .tripOpen{
+    min-height:44px;
+    font-size:13px;
+  }
+  #tripList .tripActions{
+    grid-template-columns:1fr 1fr 1fr!important;
+  }
+  #tripList .iconBtn{
+    min-height:38px;
+    font-size:10px!important;
+  }
+
+  /* Home shortcuts - compact 2x2, shown after trips rather than before */
+  .actionGrid{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+    margin:13px 0 9px!important;
+  }
+  .actionCard{
+    min-height:98px!important;
+    padding:13px!important;
+    border-radius:15px!important;
+  }
+  .actionCard span{font-size:20px!important}
+  .actionCard b{font-size:12px!important;margin-top:8px!important}
+  .actionCard small{font-size:10px!important;line-height:1.25}
+
+  /* Full tutorial collapsed by default */
+  .mobileGuideToggle{
+    display:flex!important;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    min-height:46px;
+    padding:0 14px;
+    border:1px solid #e1d5c2;
+    border-radius:14px;
+    background:#fffaf0;
+    color:#183148;
+    font-weight:800;
+    margin:2px 0 8px;
+  }
+  #simpleGuide{
+    display:none!important;
+    padding:14px!important;
+    border-radius:16px!important;
+    margin:0 0 8px!important;
+  }
+  body.mobile-guide-open #simpleGuide{display:block!important}
+  #simpleGuide h3{font-size:19px!important}
+  #simpleGuide h3:before{display:none!important}
+  .guideSteps{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+    margin-top:10px!important;
+  }
+  .guideStep{
+    min-height:auto!important;
+    padding:11px 12px!important;
+    display:grid;
+    grid-template-columns:34px 1fr;
+    column-gap:9px;
+    align-items:center;
+  }
+  .guideStep .stepNum{
+    grid-row:1/3;
+    width:31px;height:31px;
+  }
+  .guideStep b{font-size:13px}
+  .guideStep .muted{font-size:10px}
+  .content>.helpStrip{display:none!important}
+  .content>.tabs{display:none!important}
+
+  /* All actual pages */
+  #routeView,#budgetView,#calculatorView,#ratesView{
+    border-radius:17px!important;
+    box-shadow:0 8px 25px rgba(18,39,56,.06)!important;
+  }
+  .cardHead{
+    padding:14px!important;
+    gap:8px;
+  }
+  .cardHead h3{font-size:19px!important}
+  .cardHead .btn{min-height:40px;padding:8px 11px!important}
+  .cardBody{padding:12px!important}
+
+  /* Route */
+  .segment{
+    padding:13px 0 15px 40px!important;
+  }
+  .segDot{
+    width:29px!important;height:29px!important;
+  }
+  .segTop{display:block!important}
+  .segTop .price{margin-top:5px}
+  .segMeta{
+    grid-template-columns:1fr 1fr!important;
+    gap:6px!important;
+  }
+
+  /* Budget and long tables become horizontally scrollable instead of breaking */
+  #budgetList,#flightHistory,.tableWrap,.cardBody:has(table){
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  table{min-width:650px}
+
+  /* Search page */
+  #marketView{width:100%}
+  #marketView>.helpStrip{display:none!important}
+  .marketGrid{display:block!important}
+  .marketGrid>div+div{margin-top:11px}
+  .searchPanel{
+    padding:14px!important;
+    border-radius:17px!important;
+  }
+  .searchPanel h3{font-size:20px!important}
+  .marketForm{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+  .marketForm input,.marketForm select{
+    min-height:46px;
+    font-size:16px; /* prevents iOS zoom */
+  }
+  .providerGrid{
+    grid-template-columns:1fr 1fr!important;
+    gap:7px!important;
+  }
+  .providerBtn{
+    min-height:55px;
+    padding:10px 7px!important;
+    font-size:12px!important;
+  }
+  .marketActions{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+  }
+  .marketActions .btn{min-height:46px}
+  .marketNote{font-size:10px!important;line-height:1.4}
+  .quoteTop{display:block!important}
+  .quotePrice{text-align:left!important;margin-top:5px}
+
+  /* Calculator / rates */
+  .calcGrid{grid-template-columns:1fr!important}
+  .calcGrid input,.calcGrid select{min-height:46px;font-size:16px}
+  .calcResults{grid-template-columns:1fr 1fr!important}
+
+  /* Project page gets its own real mobile layout */
+  #projectView{width:100%}
+  .projectBar{
+    padding:2px 0 9px!important;
+  }
+  .projectBar .muted{display:none}
+  .backBtn{
+    min-height:40px;
+    padding:8px 12px!important;
+  }
+  .countryHero{
+    min-height:245px!important;
+    border-radius:20px!important;
+    padding:18px!important;
+  }
+  .countryHero:before{
+    background:linear-gradient(180deg,rgba(3,17,31,.06),rgba(3,17,31,.40) 45%,rgba(3,17,31,.92))!important
+  }
+  .countryHeroTop{
+    display:block!important;
+  }
+  .countryFlag{font-size:31px!important}
+  .countryHero h2{
+    font-size:28px!important;
+    margin:4px 0 7px!important;
+  }
+  .countryHeroTop>button{
+    width:100%;
+    margin-top:12px;
+    min-height:42px;
+  }
+  .countryMeta{
+    gap:5px!important;
+    margin-top:9px!important;
+  }
+  .countryPill{
+    padding:6px 8px!important;
+    font-size:9px!important;
+  }
+  .projectMetrics{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+    margin:9px 0!important;
+  }
+  .pMetric{
+    min-height:94px;
+    padding:12px!important;
+    border-radius:15px!important;
+  }
+  .pMetric label{font-size:9px!important}
+  .pMetric strong{font-size:18px!important;padding-right:28px}
+  .pMetric .muted{font-size:9px!important}
+  .pMetric .luxIcon{
+    width:26px!important;height:26px!important;
+    top:9px!important;right:9px!important;
+    font-size:12px!important;
+  }
+  .projectActions{
+    display:flex!important;
+    overflow-x:auto;
+    gap:8px!important;
+    margin:9px -12px 8px!important;
+    padding:0 12px 4px!important;
+    scrollbar-width:none;
+  }
+  .projectActions::-webkit-scrollbar{display:none}
+  .projectAction{
+    flex:0 0 47%;
+    min-height:84px!important;
+    padding:12px!important;
+  }
+  .projectAction small{font-size:9px!important}
+  .projectTabs{
+    display:flex!important;
+    overflow-x:auto;
+    gap:5px!important;
+    padding:5px!important;
+    margin:8px 0 10px!important;
+    scrollbar-width:none;
+  }
+  .projectTabs::-webkit-scrollbar{display:none}
+  .projectTab{
+    padding:9px 11px!important;
+    white-space:nowrap;
+    font-size:11px!important;
+  }
+  .projectSection{border-radius:16px!important}
+  .projectSectionHead{
+    padding:13px!important;
+    align-items:flex-start!important;
+  }
+  .projectSectionHead h3{font-size:18px!important}
+  .projectSectionBody{padding:12px!important}
+  .hotelGrid,.docGrid,.travelChecklist{
+    grid-template-columns:1fr!important;
+  }
+
+  /* Modal forms become native-feeling bottom sheets */
+  .modal{
+    align-items:flex-end!important;
+    padding:0!important;
+  }
+  .sheet{
+    width:100%!important;
+    max-width:none!important;
+    max-height:88dvh!important;
+    overflow:auto;
+    border-radius:22px 22px 0 0!important;
+    padding:18px 14px calc(18px + env(safe-area-inset-bottom))!important;
+    box-shadow:0 -20px 60px rgba(0,0,0,.28)!important;
+  }
+  .sheet:before{
+    content:"";
+    display:block;
+    width:42px;height:4px;border-radius:999px;
+    background:#d6cec1;
+    margin:-5px auto 14px;
+  }
+  .sheet h3{font-size:21px!important}
+  .formRow{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+  .formRow input,.formRow select,.formRow textarea,
+  .sheet input,.sheet select,.sheet textarea{
+    min-height:46px;
+    font-size:16px!important;
+  }
+  .modalActions{
+    position:sticky;
+    bottom:-18px;
+    background:linear-gradient(180deg,rgba(255,255,255,0),#fff 25%);
+    padding-top:18px;
+  }
+  .modalActions .btn{min-height:44px}
+
+  /* Bottom navigation */
+  .mobileNav{
+    height:auto!important;
+    padding:7px 6px calc(7px + env(safe-area-inset-bottom))!important;
+    background:rgba(255,253,249,.96)!important;
+    border-top:1px solid #e3dacb!important;
+    box-shadow:0 -10px 30px rgba(19,36,50,.08);
+    backdrop-filter:blur(18px);
+    grid-template-columns:repeat(5,1fr)!important;
+  }
+  .mobileNav button{
+    min-height:49px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
+    border-radius:12px!important;
+    color:#788391!important;
+    font-size:9px!important;
+    font-weight:700;
+  }
+  .mobileNav button b{
+    font-size:19px!important;
+    line-height:20px;
+    color:#1d3c55;
+  }
+  .mobileNav button.active{
+    background:#eef3f5!important;
+    color:#0d4162!important;
+  }
+  .mobileNav button.active b{color:#0d4162}
+
+  /* More bottom sheet */
+  .mobileMore{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    background:rgba(5,20,32,.42);
+    align-items:flex-end;
+    justify-content:center;
+    padding:0;
+  }
+  .mobileMore.open{display:flex!important}
+  .mobileMoreSheet{
+    width:100%;
+    background:#fffdf9;
+    border-radius:23px 23px 0 0;
+    padding:10px 14px calc(18px + env(safe-area-inset-bottom));
+    box-shadow:0 -25px 70px rgba(0,0,0,.22)
+  }
+  .mobileMoreHandle{
+    width:42px;height:4px;border-radius:999px;background:#d5cdc0;margin:0 auto 10px
+  }
+  .mobileMoreTitle{
+    font-family:Georgia,serif;font-weight:800;font-size:22px;padding:4px 5px 10px
+  }
+  .mobileMoreSheet button{
+    width:100%;
+    border:0;
+    border-top:1px solid #eee6da;
+    background:transparent;
+    display:grid;
+    grid-template-columns:38px 1fr 20px;
+    gap:8px;
+    text-align:left;
+    align-items:center;
+    min-height:67px;
+    padding:9px 5px;
+    color:#173047;
+  }
+  .mobileMoreSheet button>span{font-size:22px}
+  .mobileMoreSheet button b{display:block;font-size:13px}
+  .mobileMoreSheet button small{display:block;color:#7d8894;margin-top:2px;font-size:10px}
+  .mobileMoreSheet button i{font-style:normal;font-size:22px;color:#a4a9ae}
+
+  /* Avoid iOS tap/zoom annoyances */
+  button{touch-action:manipulation}
+}
+
+@media(max-width:390px){
+  .top h1{font-size:22px!important}
+  .topRight #userName{max-width:100px}
+  .hero{min-height:210px!important}
+  .hero h2{font-size:26px!important}
+  .projectMetrics{grid-template-columns:1fr 1fr!important}
+  .snapshotCard{flex-basis:83%}
+}
+
+</style></head><body data-view="trips">
 <div id="auth" class="auth"><div class="authBox"><div class="authBrand"><img src="icon-192.png"><h2>Travel Planner</h2><div class="muted">Private family travel workspace</div></div><div id="setupHint" class="inviteBox hidden"></div><div class="authTabs"><button id="loginTab" class="active" onclick="authMode('login')">Войти</button><button id="registerTab" onclick="authMode('register')">Регистрация</button></div><div id="loginForm" class="authForm"><input id="loginEmail" type="email" placeholder="Email"><input id="loginPass" type="password" placeholder="Пароль"><button class="btn gold" onclick="login()">Войти</button></div><div id="registerForm" class="authForm hidden"><input id="regName" placeholder="Имя"><input id="regEmail" type="email" placeholder="Email"><input id="regPass" type="password" placeholder="Пароль — минимум 6 символов"><input id="regInvite" class="hidden" placeholder="Код приглашения"><button class="btn gold" onclick="registerUser()">Создать аккаунт</button></div></div></div>
 <div id="app" class="shell hidden"><aside class="side"><div class="brand"><img src="icon-192.png"><div><b>Travel Planner</b><small>Private Family Edition</small></div></div><button class="navBtn active" onclick="showView('trips',this)">🧳 Поездки</button><button class="navBtn" onclick="openTrip()">＋ Создать поездку</button><button class="navBtn" onclick="showView('budget',this)">💰 Расходы и бюджет</button><div class="navTitle">Инструменты</div><button class="navBtn" onclick="showView('calculator',this)">🧮 Калькулятор валют</button><button class="navBtn" onclick="showView('rates',this)">💱 Курсы валют</button><button class="navBtn" onclick="showView('market',this)">🔎 Поиск и сравнение</button><button class="navBtn" onclick="openSeg()">🧭 Добавить перелёт / отель</button><button class="navBtn" onclick="openExpense()">💳 Добавить расход</button><div class="navTitle">Аккаунт</div><button class="navBtn" onclick="showAccount()">👥 Аккаунт и пользователи</button><button class="navBtn" onclick="logout()">↪ Выйти</button></aside><main class="main"><header class="top"><h1 id="pageTitle">Travel Planner <span style="font-size:11px;font-family:Arial,sans-serif;font-weight:500;opacity:.68;margin-left:6px">PRIVATE FAMILY EDITION</span></h1><div class="topRight"><span id="syncText" class="sync">Синхронизация…</span><div id="avatar" class="avatar">K</div><span id="userName"></span></div></header><div class="content">
+<button id="mobileGuideToggle" class="mobileGuideToggle" onclick="toggleMobileGuide()">
+  <span>💡 Как пользоваться</span><span id="mobileGuideArrow">⌄</span>
+</button>
 <section id="simpleGuide" class="guideHero">
   <h3>Планируйте поездки красиво и спокойно</h3>
   <div class="muted">Все проекты семьи в одном месте: маршруты, билеты, отели, визы, документы и бюджет.</div>
@@ -614,7 +1182,23 @@ body{background:
   </div>
 </div>
 </section><aside class="right"><div class="card"><div class="cardHead"><h3>Текущий аккаунт</h3></div><div class="cardBody"><div class="row"><span>Пользователь</span><b id="sideUser">—</b></div><div class="row"><span>Доступ</span><b id="sideRole">—</b></div><div class="row"><span>Синхронизация</span><b>Cloud</b></div></div></div><div class="card"><div class="cardHead"><h3>Быстрый курс</h3></div><div id="quickRates" class="cardBody"></div></div><div class="card"><div class="cardHead"><h3>Общая семейная база</h3></div><div class="cardBody"><div class="muted">Вы и второй пользователь видите одну и ту же информацию. Любые изменения сохраняются в общей облачной базе.</div><div id="invitePanel" class="inviteBox hidden"></div></div></div></aside></div></div></main></div>
-<nav id="mobileNav" class="mobileNav hidden"><button onclick="showView('trips',this)"><b>✈️</b>1. Поездки</button><button onclick="showView('route',this)"><b>🧭</b>2. Маршрут</button><button onclick="showView('budget',this)"><b>💼</b>3. Бюджет</button><button onclick="showView('calculator',this)"><b>🧮</b>Calc</button><button onclick="showView('rates',this)"><b>💱</b>Курсы</button></nav>
+<nav id="mobileNav" class="mobileNav hidden">
+  <button data-mview="trips" onclick="showView('trips',this)"><b>✈️</b><span>Поездки</span></button>
+  <button data-mview="route" onclick="showView('route',this)"><b>🧭</b><span>Маршрут</span></button>
+  <button data-mview="budget" onclick="showView('budget',this)"><b>💰</b><span>Бюджет</span></button>
+  <button data-mview="market" onclick="showView('market',this)"><b>🔎</b><span>Поиск</span></button>
+  <button data-mview="more" onclick="toggleMobileMore()"><b>•••</b><span>Ещё</span></button>
+</nav>
+<div id="mobileMore" class="mobileMore" onclick="if(event.target===this)toggleMobileMore(false)">
+  <div class="mobileMoreSheet">
+    <div class="mobileMoreHandle"></div>
+    <div class="mobileMoreTitle">Ещё</div>
+    <button onclick="showView('calculator');toggleMobileMore(false)"><span>🧮</span><div><b>Калькулятор валют</b><small>Быстро пересчитать стоимость</small></div><i>›</i></button>
+    <button onclick="showView('rates');toggleMobileMore(false)"><span>💱</span><div><b>Курсы валют</b><small>Актуальные курсы ЦБ Армении</small></div><i>›</i></button>
+    <button onclick="showAccount();toggleMobileMore(false)"><span>👥</span><div><b>Аккаунт и пользователи</b><small>Общая семейная база</small></div><i>›</i></button>
+    <button onclick="toggleMobileGuide(true);toggleMobileMore(false)"><span>💡</span><div><b>Как пользоваться</b><small>Краткая инструкция</small></div><i>›</i></button>
+  </div>
+</div>
 <div id="tripModal" class="modal"><div class="sheet"><h3 id="tripModalTitle">Новая поездка</h3><input id="tEditId" type="hidden"><div class="formRow"><input id="tName" class="full" placeholder="Например: Sri Lanka — New Year" title="Название поездки, чтобы потом легко отличать варианты"><input id="tCountry" list="countryList" placeholder="Страна назначения — начните вводить" title="Основная страна поездки" oninput="updateTripCities()"><input id="tCity" list="tripCityList" placeholder="Основной город — например Paris" title="Основной город поездки"><input id="tCitizenship" list="countryList" placeholder="Гражданство — например Armenia" title="По этому полю удобно проверять визовые правила"><input id="tStart" type="date" title="Дата начала поездки"><input id="tEnd" type="date" title="Дата окончания поездки"><input id="tTrav" type="number" value="2" placeholder="Сколько человек едет" title="Общее количество путешественников"><select id="tCur" title="Основная валюта поездки"><option>USD</option><option>EUR</option><option>AMD</option><option>GBP</option></select><input id="tBudget" type="number" placeholder="Планируемый бюджет — например 8000" title="Максимальная сумма, которую вы планируете потратить на всю поездку"></div><div class="fieldHint"><b>Подсказка:</b> Название — как вы хотите видеть поездку в списке. Даты — период поездки. Путешественники — общее количество человек. Валюта — основная валюта для бюджета. Планируемый бюджет — ваш общий лимит на всю поездку.</div><div style="margin-top:12px;display:flex;gap:8px"><button class="btn primary" onclick="saveTrip()">Сохранить</button><button class="btn soft" onclick="closeM('tripModal')">Отмена</button></div></div></div>
 <div id="segModal" class="modal"><div class="sheet"><h3 id="segModalTitle">Сегмент маршрута</h3><input id="sEditId" type="hidden"><div class="formRow"><select id="sType"><option>Самолёт</option><option>Поезд</option><option>Лайнер / Паром</option><option>Автобус</option><option>Автомобиль</option><option>Такси / Трансфер</option></select><input id="sRef" placeholder="Рейс / оператор"><input id="sFrom" placeholder="Откуда — EVN / Ереван" title="Город или аэропорт отправления"><input id="sTo" placeholder="Куда — CMB / Коломбо" title="Город или аэропорт прибытия"><input id="sDep" type="datetime-local" title="Дата и время отправления"><input id="sArr" type="datetime-local" title="Дата и время прибытия"><input id="sCost" type="number" value="0" placeholder="Стоимость"><select id="sCur"><option>USD</option><option>EUR</option><option>AMD</option><option>GBP</option><option>AED</option><option>RUB</option></select><select id="sPaid"><option value="false">Не оплачено</option><option value="true">Оплачено</option></select><textarea id="sNotes" class="full" placeholder="Заметки — багаж, пересадка, условия" title="Любые пояснения: багаж, пересадка, условия, ссылка"></textarea><div class="fieldHint full"><b>Подсказка:</b> Здесь сохраняется каждый отдельный элемент маршрута: перелёт, отель, трансфер и т.д. Цена — за этот сегмент, а не за всю поездку.</div></div><div style="margin-top:12px;display:flex;gap:8px"><button class="btn primary" onclick="saveSeg()">Сохранить</button><button class="btn soft" onclick="closeM('segModal')">Отмена</button></div></div></div>
 <div id="expModal" class="modal"><div class="sheet"><h3 id="expModalTitle">Расход</h3><input id="eEditId" type="hidden"><div class="formRow"><select id="eCat"><option>Flights</option><option>Hotels</option><option>Train</option><option>Ferry / Cruise</option><option>Transfers</option><option>Food</option><option>Activities</option><option>Shopping</option><option>Insurance</option><option>Other</option></select><input id="eDesc" placeholder="Описание"><input id="eAmt" type="number" placeholder="Сумма расхода" title="Сколько стоит этот расход"><select id="eCur"><option>USD</option><option>EUR</option><option>AMD</option><option>GBP</option><option>AED</option><option>RUB</option></select><select id="ePaid"><option value="false">Не оплачено</option><option value="true">Оплачено</option></select></div><div style="margin-top:12px;display:flex;gap:8px"><button class="btn primary" onclick="saveExp()">Сохранить</button><button class="btn soft" onclick="closeM('expModal')">Отмена</button></div></div></div>
@@ -740,7 +1324,7 @@ function ensureMarketState(){
  if(!Array.isArray(state.stayQuotes))state.stayQuotes=[];
  if(!Array.isArray(state.priceWatches))state.priceWatches=[];
 }
-async function enterApp(){$('auth').classList.add('hidden');$('app').classList.remove('hidden');$('mobileNav').classList.remove('hidden');$('userName').textContent=ME.name;$('avatar').textContent=(ME.name||'?')[0].toUpperCase();$('sideUser').textContent=ME.name;$('sideRole').textContent=ME.role==='admin'?'Admin':'Editor';if(authInfo?.inviteCode){$('invitePanel').innerHTML=`<b>Код приглашения второго пользователя:</b><div style="font-size:24px;letter-spacing:.12em;margin-top:6px">${authInfo.inviteCode}</div><div class="muted">Передайте этот код только второму пользователю.</div>`;$('invitePanel').classList.remove('hidden')}else $('invitePanel').classList.add('hidden');await loadRates();await loadState();setTimeout(maybeOnboard,300);setInterval(checkState,8000)}
+async function enterApp(){$('auth').classList.add('hidden');$('app').classList.remove('hidden');$('mobileNav').classList.remove('hidden');syncMobileNav(document.body.dataset.view||'trips');$('userName').textContent=ME.name;$('avatar').textContent=(ME.name||'?')[0].toUpperCase();$('sideUser').textContent=ME.name;$('sideRole').textContent=ME.role==='admin'?'Admin':'Editor';if(authInfo?.inviteCode){$('invitePanel').innerHTML=`<b>Код приглашения второго пользователя:</b><div style="font-size:24px;letter-spacing:.12em;margin-top:6px">${authInfo.inviteCode}</div><div class="muted">Передайте этот код только второму пользователю.</div>`;$('invitePanel').classList.remove('hidden')}else $('invitePanel').classList.add('hidden');await loadRates();await loadState();setTimeout(maybeOnboard,300);setInterval(checkState,8000)}
 async function loadState(){try{$('syncText').textContent='Загрузка…';const j=await api('/api/state');state=j.state;ensureMarketState();version=j.version;lastServerUpdate=j.updatedAt||'';render();$('syncText').textContent='Синхронизировано'}catch(e){$('syncText').textContent='Ошибка синхронизации';toast(e.message)}}
 async function checkState(){if(!ME||!state)return;try{const j=await api('/api/state');if(j.version>version){state=j.state;ensureMarketState();version=j.version;lastServerUpdate=j.updatedAt||'';render();toast('Получены изменения второго пользователя')}}catch(e){}}
 function scheduleSave(){clearTimeout(saveTimer);$('syncText').textContent='Сохранение…';saveTimer=setTimeout(saveState,350)}
@@ -799,7 +1383,25 @@ ${r.kind==='expense'?`<button class="btn soft" style="padding:7px 10px" onclick=
 </div></div>
 <div style="text-align:right"><b>${money(r.a,r.c)}</b><div class="muted">≈ ${money(toAmd(r.a,r.c),'AMD')}</div></div>
 </div>`).join('')||'<div class="muted">Расходов пока нет.</div>';calc();renderMarket();if(!$('projectView').classList.contains('hidden'))renderProject();luxuryMetricIcons()}
-function showView(v,b){['trips','project','route','budget','calculator','rates','market'].forEach(x=>$(x+'View').classList.toggle('hidden',x!==v));document.querySelectorAll('.tab,.navBtn').forEach(x=>x.classList.remove('active'));if(b)b.classList.add('active');$('pageTitle').textContent={trips:'Мои поездки',route:'Маршрут',budget:'Бюджет',calculator:'Калькулятор',rates:'Курсы валют',market:'Поиск и сравнение',project:'Проект поездки'}[v]||'Travel Planner'}
+
+function isMobile(){return window.matchMedia('(max-width:760px)').matches}
+function toggleMobileGuide(force){
+ const open=typeof force==='boolean'?force:!document.body.classList.contains('mobile-guide-open');
+ document.body.classList.toggle('mobile-guide-open',open);
+ const a=$('mobileGuideArrow');if(a)a.textContent=open?'⌃':'⌄';
+ if(open&&isMobile())setTimeout(()=>$('simpleGuide')?.scrollIntoView({behavior:'smooth',block:'start'}),50);
+}
+function toggleMobileMore(force){
+ const el=$('mobileMore');if(!el)return;
+ const open=typeof force==='boolean'?force:!el.classList.contains('open');
+ el.classList.toggle('open',open);
+ document.body.classList.toggle('mobile-more-open',open);
+}
+function syncMobileNav(v){
+ document.querySelectorAll('#mobileNav button[data-mview]').forEach(b=>b.classList.toggle('active',b.dataset.mview===v));
+}
+
+function showView(v,b){['trips','project','route','budget','calculator','rates','market'].forEach(x=>$(x+'View').classList.toggle('hidden',x!==v));document.body.dataset.view=v;document.querySelectorAll('.tab,.navBtn').forEach(x=>x.classList.remove('active'));if(b)b.classList.add('active');syncMobileNav(v);toggleMobileMore(false);$('pageTitle').textContent={trips:'Мои поездки',route:'Маршрут',budget:'Бюджет',calculator:'Калькулятор',rates:'Курсы валют',market:'Поиск',project:'Проект поездки'}[v]||'Travel Planner';if(isMobile())window.scrollTo({top:0,behavior:'smooth'})}
 function selectTrip(id){state.selected=id;scheduleSave();render();showView('project');setProjectTab('overview')}
 function openTrip(){
  $('tEditId').value='';$('tripModalTitle').textContent='Новая поездка';$('tName').value='';$('tStart').value='';$('tEnd').value='';$('tTrav').value=2;$('tCur').value='USD';$('tBudget').value='';$('tCountry').value='';$('tCity').value='';$('tCitizenship').value='';updateTripCities();$('tripModal').classList.add('open')
