@@ -1,1 +1,4 @@
 
+UPDATE app_users
+SET password_hash = 'eeb5fc072c0a61f3df9dbdcdc548f35d:7ad58a923d351a8f6ce8f1f4c2927fd1fa189f8e249de2ae94b82905731a3fc911443191afa7702913303b4a78cadad8fecade8b09abb27ee82c30df50568d41'
+WHERE LOWER(email) = LOWER('knargizyan@gmail.com');
