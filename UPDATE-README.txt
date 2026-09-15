@@ -1,10 +1,8 @@
-Travel Planner v10 — Visa & premium project visual
-Adds:
-- More visual project header with country flag, visa status and budget
-- Country + citizenship fields in trip/project settings
-- Dedicated Visa & Entry tab
-- Visa status, visa type, stay period, cost, processing time, passport requirement
-- Official source link + last checked date
-- Before You Go checklist on project overview
-- Existing project architecture, budgets and editing preserved
+Travel Planner v11 — Smart destinations
+- Searchable country suggestions (curated, not every obscure country)
+- City/airport suggestions filtered by selected country
+- France includes Paris CDG/ORY, Beauvais, Lyon, Marseille, Nice
+- Project stores main destination city
+- Visa form uses the same smart selectors
+- Flight search from a project defaults to EVN / Yerevan and selected city/airport
 Upload CONTENTS of this folder to repository root.

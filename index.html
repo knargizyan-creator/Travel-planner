@@ -247,7 +247,7 @@ linear-gradient(120deg,#0b2035,#174b69 60%,#b99657);color:white;padding:24px;mar
 </div>
 </section><aside class="right"><div class="card"><div class="cardHead"><h3>Текущий аккаунт</h3></div><div class="cardBody"><div class="row"><span>Пользователь</span><b id="sideUser">—</b></div><div class="row"><span>Доступ</span><b id="sideRole">—</b></div><div class="row"><span>Синхронизация</span><b>Cloud</b></div></div></div><div class="card"><div class="cardHead"><h3>Быстрый курс</h3></div><div id="quickRates" class="cardBody"></div></div><div class="card"><div class="cardHead"><h3>Общая семейная база</h3></div><div class="cardBody"><div class="muted">Вы и второй пользователь видите одну и ту же информацию. Любые изменения сохраняются в общей облачной базе.</div><div id="invitePanel" class="inviteBox hidden"></div></div></div></aside></div></div></main></div>
 <nav id="mobileNav" class="mobileNav hidden"><button onclick="showView('trips',this)"><b>✈️</b>1. Поездки</button><button onclick="showView('route',this)"><b>🧭</b>2. Маршрут</button><button onclick="showView('budget',this)"><b>💼</b>3. Бюджет</button><button onclick="showView('calculator',this)"><b>🧮</b>Calc</button><button onclick="showView('rates',this)"><b>💱</b>Курсы</button></nav>
-<div id="tripModal" class="modal"><div class="sheet"><h3 id="tripModalTitle">Новая поездка</h3><input id="tEditId" type="hidden"><div class="formRow"><input id="tName" class="full" placeholder="Например: Sri Lanka — New Year" title="Название поездки, чтобы потом легко отличать варианты"><input id="tCountry" placeholder="Страна назначения — например Sri Lanka" title="Основная страна поездки"><input id="tCitizenship" placeholder="Гражданство путешественника — например Armenia" title="По этому полю удобно проверять визовые правила"><input id="tStart" type="date" title="Дата начала поездки"><input id="tEnd" type="date" title="Дата окончания поездки"><input id="tTrav" type="number" value="2" placeholder="Сколько человек едет" title="Общее количество путешественников"><select id="tCur" title="Основная валюта поездки"><option>USD</option><option>EUR</option><option>AMD</option><option>GBP</option></select><input id="tBudget" type="number" placeholder="Планируемый бюджет — например 8000" title="Максимальная сумма, которую вы планируете потратить на всю поездку"></div><div class="fieldHint"><b>Подсказка:</b> Название — как вы хотите видеть поездку в списке. Даты — период поездки. Путешественники — общее количество человек. Валюта — основная валюта для бюджета. Планируемый бюджет — ваш общий лимит на всю поездку.</div><div style="margin-top:12px;display:flex;gap:8px"><button class="btn primary" onclick="saveTrip()">Сохранить</button><button class="btn soft" onclick="closeM('tripModal')">Отмена</button></div></div></div>
+<div id="tripModal" class="modal"><div class="sheet"><h3 id="tripModalTitle">Новая поездка</h3><input id="tEditId" type="hidden"><div class="formRow"><input id="tName" class="full" placeholder="Например: Sri Lanka — New Year" title="Название поездки, чтобы потом легко отличать варианты"><input id="tCountry" list="countryList" placeholder="Страна назначения — начните вводить" title="Основная страна поездки" oninput="updateTripCities()"><input id="tCity" list="tripCityList" placeholder="Основной город — например Paris" title="Основной город поездки"><input id="tCitizenship" list="countryList" placeholder="Гражданство — например Armenia" title="По этому полю удобно проверять визовые правила"><input id="tStart" type="date" title="Дата начала поездки"><input id="tEnd" type="date" title="Дата окончания поездки"><input id="tTrav" type="number" value="2" placeholder="Сколько человек едет" title="Общее количество путешественников"><select id="tCur" title="Основная валюта поездки"><option>USD</option><option>EUR</option><option>AMD</option><option>GBP</option></select><input id="tBudget" type="number" placeholder="Планируемый бюджет — например 8000" title="Максимальная сумма, которую вы планируете потратить на всю поездку"></div><div class="fieldHint"><b>Подсказка:</b> Название — как вы хотите видеть поездку в списке. Даты — период поездки. Путешественники — общее количество человек. Валюта — основная валюта для бюджета. Планируемый бюджет — ваш общий лимит на всю поездку.</div><div style="margin-top:12px;display:flex;gap:8px"><button class="btn primary" onclick="saveTrip()">Сохранить</button><button class="btn soft" onclick="closeM('tripModal')">Отмена</button></div></div></div>
 <div id="segModal" class="modal"><div class="sheet"><h3 id="segModalTitle">Сегмент маршрута</h3><input id="sEditId" type="hidden"><div class="formRow"><select id="sType"><option>Самолёт</option><option>Поезд</option><option>Лайнер / Паром</option><option>Автобус</option><option>Автомобиль</option><option>Такси / Трансфер</option></select><input id="sRef" placeholder="Рейс / оператор"><input id="sFrom" placeholder="Откуда — EVN / Ереван" title="Город или аэропорт отправления"><input id="sTo" placeholder="Куда — CMB / Коломбо" title="Город или аэропорт прибытия"><input id="sDep" type="datetime-local" title="Дата и время отправления"><input id="sArr" type="datetime-local" title="Дата и время прибытия"><input id="sCost" type="number" value="0" placeholder="Стоимость"><select id="sCur"><option>USD</option><option>EUR</option><option>AMD</option><option>GBP</option><option>AED</option><option>RUB</option></select><select id="sPaid"><option value="false">Не оплачено</option><option value="true">Оплачено</option></select><textarea id="sNotes" class="full" placeholder="Заметки — багаж, пересадка, условия" title="Любые пояснения: багаж, пересадка, условия, ссылка"></textarea><div class="fieldHint full"><b>Подсказка:</b> Здесь сохраняется каждый отдельный элемент маршрута: перелёт, отель, трансфер и т.д. Цена — за этот сегмент, а не за всю поездку.</div></div><div style="margin-top:12px;display:flex;gap:8px"><button class="btn primary" onclick="saveSeg()">Сохранить</button><button class="btn soft" onclick="closeM('segModal')">Отмена</button></div></div></div>
 <div id="expModal" class="modal"><div class="sheet"><h3 id="expModalTitle">Расход</h3><input id="eEditId" type="hidden"><div class="formRow"><select id="eCat"><option>Flights</option><option>Hotels</option><option>Train</option><option>Ferry / Cruise</option><option>Transfers</option><option>Food</option><option>Activities</option><option>Shopping</option><option>Insurance</option><option>Other</option></select><input id="eDesc" placeholder="Описание"><input id="eAmt" type="number" placeholder="Сумма расхода" title="Сколько стоит этот расход"><select id="eCur"><option>USD</option><option>EUR</option><option>AMD</option><option>GBP</option><option>AED</option><option>RUB</option></select><select id="ePaid"><option value="false">Не оплачено</option><option value="true">Оплачено</option></select></div><div style="margin-top:12px;display:flex;gap:8px"><button class="btn primary" onclick="saveExp()">Сохранить</button><button class="btn soft" onclick="closeM('expModal')">Отмена</button></div></div></div>
 
@@ -256,8 +256,9 @@ linear-gradient(120deg,#0b2035,#174b69 60%,#b99657);color:white;padding:24px;mar
 <div id="visaModal" class="modal"><div class="sheet">
 <h3>Виза и правила въезда</h3>
 <div class="visaGrid">
-<input id="vCountry" placeholder="Страна назначения">
-<input id="vCitizenship" placeholder="Гражданство">
+<input id="vCountry" list="countryList" placeholder="Страна назначения — начните вводить" oninput="updateVisaCities()">
+<input id="vCity" list="visaCityList" placeholder="Город — например Paris / Nice">
+<input id="vCitizenship" list="countryList" placeholder="Гражданство">
 <select id="vNeeded"><option value="unknown">Нужно проверить</option><option value="no">Виза не нужна</option><option value="eta">ETA / eVisa</option><option value="visa">Нужна виза</option><option value="arrival">Visa on arrival</option></select>
 <select id="vStatus"><option value="not_started">Не оформлена</option><option value="applied">Подана</option><option value="approved">Получена</option><option value="not_needed">Не требуется</option></select>
 <input id="vType" placeholder="Тип — Tourist / ETA / eVisa">
@@ -269,7 +270,7 @@ linear-gradient(120deg,#0b2035,#174b69 60%,#b99657);color:white;padding:24px;mar
 <input id="vOfficial" class="full" placeholder="Ссылка на официальный источник">
 <textarea id="vNotes" class="full" placeholder="Дополнительные требования — обратный билет, страховка, анкета и т.д."></textarea>
 </div>
-<div class="fieldHint"><b>Важно:</b> визовые правила могут меняться. Храните ссылку на официальный государственный источник и дату последней проверки.</div>
+<div class="fieldHint"><b>Страна и город:</b> начните вводить первые буквы — приложение предложит популярные направления и аэропорты. Список специально ограничен основными туристическими странами и городами.<br><b>Важно:</b> визовые правила могут меняться. Храните ссылку на официальный государственный источник и дату последней проверки.</div>
 <div style="margin-top:12px;display:flex;gap:8px"><button class="btn primary" onclick="saveVisa()">Сохранить</button><button class="btn soft" onclick="closeM('visaModal')">Отмена</button></div>
 </div></div>
 
@@ -344,6 +345,10 @@ linear-gradient(120deg,#0b2035,#174b69 60%,#b99657);color:white;padding:24px;mar
     </div>
   </div>
 </div>
+
+<datalist id="countryList"></datalist>
+<datalist id="tripCityList"></datalist>
+<datalist id="visaCityList"></datalist>
 <div id="toast" class="toast"></div>
 <script>
 let ME=null,state=null,version=0,rates={USD:363.28,EUR:421.11,RUB:4.29,AED:98.9,GBP:493},authInfo=null,saveTimer=null,lastServerUpdate='';
@@ -360,7 +365,7 @@ function ensureMarketState(){
  (state.trips||[]).forEach(t=>{
    if(!Array.isArray(t.hotels))t.hotels=[];
    if(!Array.isArray(t.docs))t.docs=[];
-   if(t.plannedBudget===undefined)t.plannedBudget=0;if(!t.country)t.country='';if(!t.citizenship)t.citizenship='';if(!t.visa)t.visa={};
+   if(t.plannedBudget===undefined)t.plannedBudget=0;if(!t.country)t.country='';if(!t.city)t.city='';if(!t.citizenship)t.citizenship='';if(!t.visa)t.visa={};
  });
 
  if(!Array.isArray(state.flightQuotes))state.flightQuotes=[];
@@ -389,11 +394,11 @@ ${r.kind==='expense'?`<button class="btn soft" style="padding:7px 10px" onclick=
 function showView(v,b){['trips','project','route','budget','calculator','rates','market'].forEach(x=>$(x+'View').classList.toggle('hidden',x!==v));document.querySelectorAll('.tab,.navBtn').forEach(x=>x.classList.remove('active'));if(b)b.classList.add('active');$('pageTitle').textContent={trips:'Мои поездки',route:'Маршрут',budget:'Бюджет',calculator:'Калькулятор',rates:'Курсы валют',market:'Поиск и сравнение',project:'Проект поездки'}[v]||'Travel Planner'}
 function selectTrip(id){state.selected=id;scheduleSave();render();showView('project');setProjectTab('overview')}
 function openTrip(){
- $('tEditId').value='';$('tripModalTitle').textContent='Новая поездка';$('tName').value='';$('tStart').value='';$('tEnd').value='';$('tTrav').value=2;$('tCur').value='USD';$('tBudget').value='';$('tCountry').value='';$('tCitizenship').value='';$('tripModal').classList.add('open')
+ $('tEditId').value='';$('tripModalTitle').textContent='Новая поездка';$('tName').value='';$('tStart').value='';$('tEnd').value='';$('tTrav').value=2;$('tCur').value='USD';$('tBudget').value='';$('tCountry').value='';$('tCity').value='';$('tCitizenship').value='';updateTripCities();$('tripModal').classList.add('open')
 }
 function editTrip(id){
  const x=state.trips.find(t=>t.id===id);if(!x)return;
- $('tEditId').value=x.id;$('tripModalTitle').textContent='Редактировать поездку';$('tName').value=x.name||'';$('tStart').value=x.start||'';$('tEnd').value=x.end||'';$('tTrav').value=x.travellers||1;$('tCur').value=x.currency||'USD';$('tBudget').value=x.plannedBudget||'';$('tCountry').value=x.country||'';$('tCitizenship').value=x.citizenship||'';$('tripModal').classList.add('open')
+ $('tEditId').value=x.id;$('tripModalTitle').textContent='Редактировать поездку';$('tName').value=x.name||'';$('tStart').value=x.start||'';$('tEnd').value=x.end||'';$('tTrav').value=x.travellers||1;$('tCur').value=x.currency||'USD';$('tBudget').value=x.plannedBudget||'';$('tCountry').value=x.country||'';$('tCity').value=x.city||'';$('tCitizenship').value=x.citizenship||'';updateTripCities();$('tripModal').classList.add('open')
 }
 function duplicateTrip(id){
  const x=state.trips.find(t=>t.id===id);if(!x)return;
@@ -417,10 +422,10 @@ function saveTrip(){
  const id=$('tEditId').value;
  if(id){
    const x=state.trips.find(t=>t.id===id);if(!x)return;
-   x.name=$('tName').value.trim();x.start=$('tStart').value;x.end=$('tEnd').value;x.travellers=Number($('tTrav').value||1);x.currency=$('tCur').value;x.plannedBudget=Number($('tBudget').value||0);x.country=$('tCountry').value.trim();x.citizenship=$('tCitizenship').value.trim();
+   x.name=$('tName').value.trim();x.start=$('tStart').value;x.end=$('tEnd').value;x.travellers=Number($('tTrav').value||1);x.currency=$('tCur').value;x.plannedBudget=Number($('tBudget').value||0);x.country=$('tCountry').value.trim();x.city=extractCityName($('tCity').value.trim());x.citizenship=$('tCitizenship').value.trim();
    state.selected=id;toast('Поездка обновлена')
  }else{
-   let x={id:uid('t'),name:$('tName').value.trim(),start:$('tStart').value,end:$('tEnd').value,travellers:Number($('tTrav').value||1),currency:$('tCur').value,plannedBudget:Number($('tBudget').value||0),country:$('tCountry').value.trim(),citizenship:$('tCitizenship').value.trim(),visa:{},segments:[],expenses:[],hotels:[],docs:[]};
+   let x={id:uid('t'),name:$('tName').value.trim(),start:$('tStart').value,end:$('tEnd').value,travellers:Number($('tTrav').value||1),currency:$('tCur').value,plannedBudget:Number($('tBudget').value||0),country:$('tCountry').value.trim(),city:extractCityName($('tCity').value.trim()),citizenship:$('tCitizenship').value.trim(),visa:{},segments:[],expenses:[],hotels:[],docs:[]};
    state.trips.unshift(x);state.selected=x.id;toast('Поездка создана')
  }
  closeM('tripModal');render();scheduleSave()
@@ -520,6 +525,60 @@ function projectEmpty(icon,title,text,buttonHtml=''){
  return `<div class="emptyState"><div style="font-size:34px">${icon}</div><b>${title}</b><div>${text}</div>${buttonHtml?`<div style="margin-top:12px">${buttonHtml}</div>`:''}</div>`
 }
 
+
+const DESTINATIONS={
+ "Armenia":[["Yerevan","EVN"],["Gyumri","LWN"]],
+ "France":[["Paris Charles de Gaulle","CDG"],["Paris Orly","ORY"],["Beauvais","BVA"],["Lyon","LYS"],["Marseille","MRS"],["Nice","NCE"]],
+ "Italy":[["Rome","FCO"],["Milan Malpensa","MXP"],["Milan Bergamo","BGY"],["Venice","VCE"],["Bologna","BLQ"],["Naples","NAP"]],
+ "Spain":[["Madrid","MAD"],["Barcelona","BCN"],["Valencia","VLC"],["Alicante","ALC"],["Malaga","AGP"]],
+ "United Arab Emirates":[["Dubai","DXB"],["Dubai Al Maktoum","DWC"],["Abu Dhabi","AUH"],["Sharjah","SHJ"]],
+ "Turkey":[["Istanbul","IST"],["Istanbul Sabiha","SAW"],["Antalya","AYT"],["Izmir","ADB"]],
+ "Georgia":[["Tbilisi","TBS"],["Batumi","BUS"],["Kutaisi","KUT"]],
+ "Greece":[["Athens","ATH"],["Thessaloniki","SKG"],["Heraklion","HER"],["Rhodes","RHO"]],
+ "Cyprus":[["Larnaca","LCA"],["Paphos","PFO"]],
+ "Qatar":[["Doha","DOH"]],
+ "Sri Lanka":[["Colombo","CMB"]],
+ "Thailand":[["Bangkok","BKK"],["Phuket","HKT"],["Krabi","KBV"],["Chiang Mai","CNX"]],
+ "Egypt":[["Cairo","CAI"],["Sharm El Sheikh","SSH"],["Hurghada","HRG"]],
+ "Germany":[["Berlin","BER"],["Frankfurt","FRA"],["Munich","MUC"],["Cologne","CGN"],["Dusseldorf","DUS"]],
+ "Austria":[["Vienna","VIE"],["Salzburg","SZG"]],
+ "Czech Republic":[["Prague","PRG"]],
+ "Hungary":[["Budapest","BUD"]],
+ "Netherlands":[["Amsterdam","AMS"],["Eindhoven","EIN"]],
+ "Belgium":[["Brussels","BRU"],["Charleroi","CRL"]],
+ "Switzerland":[["Zurich","ZRH"],["Geneva","GVA"],["Basel","BSL"]],
+ "Portugal":[["Lisbon","LIS"],["Porto","OPO"]],
+ "United Kingdom":[["London Heathrow","LHR"],["London Gatwick","LGW"],["London Luton","LTN"],["Manchester","MAN"]],
+ "Poland":[["Warsaw","WAW"],["Krakow","KRK"]],
+ "Romania":[["Bucharest","OTP"]],
+ "Bulgaria":[["Sofia","SOF"],["Varna","VAR"]],
+ "Serbia":[["Belgrade","BEG"]],
+ "Croatia":[["Zagreb","ZAG"],["Dubrovnik","DBV"],["Split","SPU"]],
+ "Montenegro":[["Podgorica","TGD"],["Tivat","TIV"]],
+ "Maldives":[["Male","MLE"]],
+ "Saudi Arabia":[["Riyadh","RUH"],["Jeddah","JED"]]
+};
+function initDestinationLists(){
+ const c=$('countryList');if(c)c.innerHTML=Object.keys(DESTINATIONS).map(x=>`<option value="${x}"></option>`).join('');
+}
+function cityOptions(country){
+ const key=Object.keys(DESTINATIONS).find(k=>k.toLowerCase()===String(country||'').trim().toLowerCase());
+ return key?DESTINATIONS[key]:[];
+}
+function fillCityList(listId,country){
+ const el=$(listId);if(!el)return;
+ el.innerHTML=cityOptions(country).map(([city,code])=>`<option value="${city} (${code})"></option>`).join('');
+}
+function updateTripCities(){fillCityList('tripCityList',$('tCountry')?.value)}
+function updateVisaCities(){fillCityList('visaCityList',$('vCountry')?.value)}
+function extractCityName(v){return String(v||'').replace(/\s*\([A-Z0-9]{3}\)\s*$/,'').trim()}
+function cityAirportValue(country,city){
+ const raw=String(city||'').trim(); if(!raw)return '';
+ const name=extractCityName(raw).toLowerCase();
+ const found=cityOptions(country).find(([c])=>c.toLowerCase()===name);
+ return found?`${found[1]} / ${found[0]}`:raw;
+}
+
 function countryFlag(name){
  const m={'armenia':'🇦🇲','sri lanka':'🇱🇰','united arab emirates':'🇦🇪','uae':'🇦🇪','spain':'🇪🇸','italy':'🇮🇹','france':'🇫🇷','thailand':'🇹🇭','qatar':'🇶🇦','turkey':'🇹🇷','georgia':'🇬🇪','greece':'🇬🇷','maldives':'🇲🇻','egypt':'🇪🇬','united states':'🇺🇸','usa':'🇺🇸','uk':'🇬🇧','united kingdom':'🇬🇧'};
  return m[String(name||'').trim().toLowerCase()]||'🌍'
@@ -554,7 +613,7 @@ function renderProject(){
  $('projectTitle').textContent=t.name;
  $('projectMeta').innerHTML=`${safe(t.start)} → ${safe(t.end)} · ${days(t)} дней · ${t.travellers} чел.`;
  $('projectFlag').textContent=countryFlag(t.country);
- $('projectCountryPill').textContent=t.country||'Страна не указана';
+ $('projectCountryPill').textContent=[t.country,t.city].filter(Boolean).join(' · ')||'Страна / город не указаны';
  $('projectVisaPill').textContent='🛂 Виза: '+visaLabel(t);
  $('projectBudgetPill').textContent='💰 '+(t.plannedBudget?money(t.plannedBudget,projectCurrency(t)):'Бюджет не задан');
  const z=totals(t), limitA=plannedBudgetAmd(t), estimateA=z.totalA, reserveA=limitA-estimateA;
@@ -623,7 +682,7 @@ function renderProject(){
  }
  if(currentProjectTab==='search'){
    out=`<div class="projectSection"><div class="projectSectionHead"><h3>🔎 Найти варианты для этой поездки</h3></div><div class="projectSectionBody">
-   <div class="helpStrip">Поиск будет использовать даты и количество путешественников из проекта <b>${safe(t.name)}</b>.</div>
+   <div class="helpStrip">Поиск будет использовать даты, количество путешественников и направление из проекта <b>${safe(t.name)}</b>. По умолчанию отправление — Yerevan (EVN).</div>
    <div class="actionGrid">
     <button class="actionCard" onclick="openProjectSearch()"><span>✈️</span><b>Авиабилеты</b><small>Сравнить авиакомпании и цены</small></button>
     <button class="actionCard" onclick="openProjectStaySearch()"><span>🏨</span><b>Booking / Airbnb</b><small>Найти жильё на даты поездки</small></button>
@@ -637,7 +696,7 @@ function renderProject(){
    <div class="sectionIntro">Визовые правила могут меняться. Здесь хранится рабочая информация по этой поездке: тип визы, срок, стоимость и ссылка на официальный источник.</div>
    <div class="visaSummary">
     <div class="visaStat"><label>Страна</label><b>${safe(t.country||v.country||'Не указана')}</b></div>
-    <div class="visaStat"><label>Гражданство</label><b>${safe(t.citizenship||v.citizenship||'Не указано')}</b></div>
+    <div class="visaStat"><label>Город</label><b>${safe(t.city||v.city||'Не указан')}</b></div><div class="visaStat"><label>Гражданство</label><b>${safe(t.citizenship||v.citizenship||'Не указано')}</b></div>
     <div class="visaStat"><label>Требование</label><b>${safe(visaLabel(t))}</b></div>
     <div class="visaStat"><label>Статус</label><b><span class="statusDot ${visaStatusClass(v)}"></span>${safe(visaStatusLabel(v))}</b></div>
     <div class="visaStat"><label>Срок пребывания</label><b>${safe(v.stay||'—')}</b></div>
@@ -666,7 +725,7 @@ function openSegForProject(kind){
  else $('sType').value='Поезд';
 }
 function openProjectSearch(){
- const t=trip();if(t){$('mfDepart').value=t.start||'';$('mfReturn').value=t.end||'';$('mfPeople').value=t.travellers||1}
+ const t=trip();if(t){$('mfFrom').value='EVN / Yerevan';$('mfTo').value=cityAirportValue(t.country,t.city);$('mfDepart').value=t.start||'';$('mfReturn').value=t.end||'';$('mfPeople').value=t.travellers||1}
  showView('market');
 }
 function openProjectStaySearch(){
@@ -676,12 +735,12 @@ function openProjectStaySearch(){
 
 function openVisa(){
  const t=trip();const v=t.visa||{};
- $('vCountry').value=v.country||t.country||'';$('vCitizenship').value=v.citizenship||t.citizenship||'';$('vNeeded').value=v.needed||'unknown';$('vStatus').value=v.status||'not_started';$('vType').value=v.type||'';$('vStay').value=v.stay||'';$('vCost').value=v.cost||'';$('vProcessing').value=v.processing||'';$('vPassport').value=v.passport||'';$('vChecked').value=v.checked||'';$('vOfficial').value=v.official||'';$('vNotes').value=v.notes||'';$('visaModal').classList.add('open')
+ $('vCountry').value=v.country||t.country||'';$('vCity').value=v.city||t.city||'';$('vCitizenship').value=v.citizenship||t.citizenship||'';updateVisaCities();$('vNeeded').value=v.needed||'unknown';$('vStatus').value=v.status||'not_started';$('vType').value=v.type||'';$('vStay').value=v.stay||'';$('vCost').value=v.cost||'';$('vProcessing').value=v.processing||'';$('vPassport').value=v.passport||'';$('vChecked').value=v.checked||'';$('vOfficial').value=v.official||'';$('vNotes').value=v.notes||'';$('visaModal').classList.add('open')
 }
 function saveVisa(){
  const t=trip();if(!t)return;
- t.country=$('vCountry').value.trim()||t.country;t.citizenship=$('vCitizenship').value.trim()||t.citizenship;
- t.visa={country:$('vCountry').value.trim(),citizenship:$('vCitizenship').value.trim(),needed:$('vNeeded').value,status:$('vStatus').value,type:$('vType').value.trim(),stay:$('vStay').value.trim(),cost:$('vCost').value.trim(),processing:$('vProcessing').value.trim(),passport:$('vPassport').value.trim(),checked:$('vChecked').value,official:$('vOfficial').value.trim(),notes:$('vNotes').value.trim()};
+ t.country=$('vCountry').value.trim()||t.country;t.city=extractCityName($('vCity').value.trim())||t.city;t.citizenship=$('vCitizenship').value.trim()||t.citizenship;
+ t.visa={country:$('vCountry').value.trim(),city:extractCityName($('vCity').value.trim()),citizenship:$('vCitizenship').value.trim(),needed:$('vNeeded').value,status:$('vStatus').value,type:$('vType').value.trim(),stay:$('vStay').value.trim(),cost:$('vCost').value.trim(),processing:$('vProcessing').value.trim(),passport:$('vPassport').value.trim(),checked:$('vChecked').value,official:$('vOfficial').value.trim(),notes:$('vNotes').value.trim()};
  closeM('visaModal');renderProject();scheduleSave();toast('Визовая информация сохранена')
 }
 
@@ -737,5 +796,6 @@ function nextOnboard(){
 }
 function closeOnboard(){localStorage.setItem('tp_onboard_done','1');$('onboard').classList.remove('open')}
 
+initDestinationLists();
 if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));bootstrap();
 </script></body></html>
