@@ -1,8 +1,3 @@
-Travel Planner v4 — editing update
-Adds:
-- Edit trip name, dates, travellers and currency
-- Duplicate trip
-- Delete trip with confirmation
-- Edit/delete route segments
-- Edit/delete expenses
-Upload the CONTENTS of this folder to the repository root.
+Travel Planner v5
+Adds helper hints and clearer placeholders in forms and search blocks.
+Upload contents of this folder to repository root.
