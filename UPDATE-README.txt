@@ -1,8 +1,8 @@
-Travel Planner v11 — Smart destinations
-- Searchable country suggestions (curated, not every obscure country)
-- City/airport suggestions filtered by selected country
-- France includes Paris CDG/ORY, Beauvais, Lyon, Marseille, Nice
-- Project stores main destination city
-- Visa form uses the same smart selectors
-- Flight search from a project defaults to EVN / Yerevan and selected city/airport
+Travel Planner v12 — Luxury Visual Refresh
+- Deep navy premium navigation
+- Gold accents and richer shadows
+- Luxury country/project hero
+- Premium cards, tabs and actions
+- Better visual hierarchy for budget, visa, route and search
+- Existing trip-project logic, visa, country/city suggestions and editing preserved
 Upload CONTENTS of this folder to repository root.
