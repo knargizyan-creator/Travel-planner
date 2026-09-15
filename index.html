@@ -225,12 +225,251 @@ body{background:
   .hero h2,.countryHero h2{font-size:29px}
 }
 
+
+/* ===== V13 PHOTO DASHBOARD ===== */
+:root{
+  --lux-gold:#d4aa55;
+  --lux-gold-soft:#f3e3b7;
+  --lux-navy:#071c30;
+  --lux-ink:#10263b;
+  --lux-cream:#f7f3eb;
+}
+
+#simpleGuide{
+  padding:18px 22px;
+  background:linear-gradient(100deg,#fffdf8 0%,#f8f1e4 100%);
+  margin-bottom:14px;
+}
+#simpleGuide h3{
+  font-size:25px;
+  margin-bottom:3px;
+}
+#simpleGuide h3:before{
+  content:"Добро пожаловать ✦  ";
+  color:#b58a3c;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:6px;
+}
+.guideSteps{
+  margin-top:12px;
+  grid-template-columns:repeat(4,1fr);
+}
+.guideStep{
+  min-height:88px;
+  background:rgba(255,255,255,.72);
+  border:1px solid #eadfcb;
+}
+
+.hero{
+  min-height:285px!important;
+  padding:30px!important;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  isolation:isolate;
+  background-size:cover!important;
+  background-position:center!important;
+  border:1px solid rgba(255,255,255,.25);
+}
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(3,17,31,.88) 0%,rgba(3,20,36,.58) 45%,rgba(3,20,36,.08) 78%);
+  z-index:-1;
+}
+.hero:after{
+  background:linear-gradient(0deg,rgba(0,0,0,.32),transparent 55%)!important;
+  inset:0!important;
+  width:auto!important;
+  height:auto!important;
+  border-radius:inherit!important;
+}
+.hero h2{
+  font-size:43px!important;
+  max-width:740px;
+  margin-bottom:10px!important;
+  text-shadow:0 4px 20px rgba(0,0,0,.32);
+}
+.hero .meta{
+  font-size:14px;
+  color:#fff!important;
+}
+.hero .tag{
+  width:max-content;
+  margin-top:18px!important;
+  padding:9px 14px!important;
+  background:rgba(8,29,47,.50)!important;
+  border:1px solid rgba(240,211,151,.6)!important;
+  color:#f9e7bc;
+  backdrop-filter:blur(8px);
+}
+
+.snapshotGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin:0 0 13px;
+}
+.snapshotCard{
+  position:relative;
+  overflow:hidden;
+  min-height:112px;
+  padding:17px 17px 15px 69px;
+  background:linear-gradient(180deg,#fff,#fbf8f2);
+  border:1px solid #e7ddcc;
+  border-radius:18px;
+  box-shadow:0 9px 26px rgba(27,42,55,.055);
+}
+.snapshotIcon{
+  position:absolute;
+  left:16px;top:17px;
+  width:40px;height:40px;
+  display:grid;place-items:center;
+  border-radius:13px;
+  background:linear-gradient(135deg,#0a3556,#16749a);
+  color:white;
+  font-size:20px;
+  box-shadow:0 7px 16px rgba(12,60,88,.18)
+}
+.snapshotCard:nth-child(2) .snapshotIcon{background:linear-gradient(135deg,#7b5c26,#d0a349)}
+.snapshotCard:nth-child(3) .snapshotIcon{background:linear-gradient(135deg,#16715e,#31a282)}
+.snapshotCard:nth-child(4) .snapshotIcon{background:linear-gradient(135deg,#4b477b,#7b74bd)}
+.snapshotCard b{display:block;font-size:14px;margin:1px 0 8px}
+.snapshotCard strong{display:block;font-size:15px;color:#102a42}
+.snapshotCard small{display:block;color:#768596;margin-top:4px;line-height:1.35}
+.snapshotCard:after{
+  content:"";
+  position:absolute;right:-35px;bottom:-50px;width:110px;height:110px;border-radius:50%;
+  background:radial-gradient(circle,rgba(214,174,91,.14),transparent 70%);
+}
+
+#tripsView .cardBody{padding:14px}
+#tripList.tripCards{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+#tripList .tripCard{
+  display:block;
+  padding:0!important;
+  overflow:hidden;
+  border-radius:18px!important;
+  background:#fff;
+  border:1px solid #e4dac8;
+}
+.tripPhoto{
+  height:154px;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+.tripPhoto:after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(2,20,35,.05),rgba(2,20,35,.54));
+}
+.tripStatus{
+  position:absolute;
+  left:12px;top:12px;z-index:2;
+  padding:6px 10px;border-radius:999px;
+  background:rgba(255,255,255,.90);
+  color:#173044;font-size:10px;font-weight:850;
+  backdrop-filter:blur(6px);
+}
+.tripPhotoTitle{
+  position:absolute;
+  z-index:2;
+  left:14px;right:14px;bottom:12px;
+  color:white;font-family:Georgia,serif;font-size:20px;font-weight:700;
+  text-shadow:0 3px 15px rgba(0,0,0,.4)
+}
+.tripCardBody{padding:14px 14px 13px}
+.tripMetaRow{display:flex;gap:8px;flex-wrap:wrap;color:#768596;font-size:11px;margin-bottom:10px}
+.tripMiniStats{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  margin:10px 0 13px;
+}
+.tripMiniStats div{padding:9px;border-radius:11px;background:#f8f5ef}
+.tripMiniStats small{display:block;color:#7d8995}
+.tripMiniStats b{font-size:13px}
+.tripOpen{
+  width:100%;padding:10px;border:0;border-radius:11px;
+  background:linear-gradient(135deg,#edd18c,#c79b48);
+  color:#10263a;font-weight:850
+}
+#tripList .tripActions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+#tripList .iconBtn{
+  padding:7px 5px!important;
+  justify-content:center;
+  font-size:10px!important;
+  border-radius:9px!important;
+}
+#tripList .tripCard.active{
+  border-color:#cfa64f!important;
+  box-shadow:0 0 0 2px rgba(207,166,79,.14),0 15px 35px rgba(20,41,60,.08)!important;
+}
+
+.countryHero{
+  background-size:cover!important;
+  background-position:center!important;
+  min-height:285px!important;
+  display:flex;
+  align-items:flex-end;
+  isolation:isolate;
+}
+.countryHero:before{
+  background:linear-gradient(90deg,rgba(3,17,31,.90),rgba(5,26,44,.58) 50%,rgba(5,26,44,.10))!important;
+  z-index:-1;
+}
+.countryHero:after{
+  background:linear-gradient(0deg,rgba(0,0,0,.30),transparent 55%)!important;
+  inset:0!important;width:auto!important;height:auto!important;border-radius:inherit!important;
+  z-index:-1;
+}
+.countryHeroTop{width:100%}
+.countryHero .muted{color:#ecf3f6}
+.countryHero .countryPill{background:rgba(255,255,255,.14);color:white}
+
+.side:after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;height:35%;
+  background:
+    linear-gradient(180deg,transparent,rgba(6,27,46,.96)),
+    url("https://images.unsplash.com/photo-1581420455310-e069c4d4529e?auto=format&fit=crop&fm=jpg&q=55&w=900") center/cover;
+  opacity:.23;
+  pointer-events:none;
+}
+.side>*{position:relative;z-index:1}
+
+@media(max-width:1100px){
+  #tripList.tripCards{grid-template-columns:1fr 1fr}
+  .snapshotGrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  #tripList.tripCards{grid-template-columns:1fr}
+  .snapshotGrid{grid-template-columns:1fr 1fr}
+  .guideSteps{grid-template-columns:1fr 1fr}
+  .hero{min-height:230px!important}
+  .hero h2{font-size:31px!important}
+  .countryHero{min-height:235px!important}
+}
+@media(max-width:480px){
+  .snapshotGrid{grid-template-columns:1fr}
+  .guideSteps{grid-template-columns:1fr}
+}
+
 </style></head><body>
 <div id="auth" class="auth"><div class="authBox"><div class="authBrand"><img src="icon-192.png"><h2>Travel Planner</h2><div class="muted">Private family travel workspace</div></div><div id="setupHint" class="inviteBox hidden"></div><div class="authTabs"><button id="loginTab" class="active" onclick="authMode('login')">Войти</button><button id="registerTab" onclick="authMode('register')">Регистрация</button></div><div id="loginForm" class="authForm"><input id="loginEmail" type="email" placeholder="Email"><input id="loginPass" type="password" placeholder="Пароль"><button class="btn gold" onclick="login()">Войти</button></div><div id="registerForm" class="authForm hidden"><input id="regName" placeholder="Имя"><input id="regEmail" type="email" placeholder="Email"><input id="regPass" type="password" placeholder="Пароль — минимум 6 символов"><input id="regInvite" class="hidden" placeholder="Код приглашения"><button class="btn gold" onclick="registerUser()">Создать аккаунт</button></div></div></div>
 <div id="app" class="shell hidden"><aside class="side"><div class="brand"><img src="icon-192.png"><div><b>Travel Planner</b><small>Private Family Edition</small></div></div><button class="navBtn active" onclick="showView('trips',this)">🧳 Поездки</button><button class="navBtn" onclick="openTrip()">＋ Создать поездку</button><button class="navBtn" onclick="showView('budget',this)">💰 Расходы и бюджет</button><div class="navTitle">Инструменты</div><button class="navBtn" onclick="showView('calculator',this)">🧮 Калькулятор валют</button><button class="navBtn" onclick="showView('rates',this)">💱 Курсы валют</button><button class="navBtn" onclick="showView('market',this)">🔎 Поиск и сравнение</button><button class="navBtn" onclick="openSeg()">🧭 Добавить перелёт / отель</button><button class="navBtn" onclick="openExpense()">💳 Добавить расход</button><div class="navTitle">Аккаунт</div><button class="navBtn" onclick="showAccount()">👥 Аккаунт и пользователи</button><button class="navBtn" onclick="logout()">↪ Выйти</button></aside><main class="main"><header class="top"><h1 id="pageTitle">Travel Planner <span style="font-size:11px;font-family:Arial,sans-serif;font-weight:500;opacity:.68;margin-left:6px">PRIVATE FAMILY EDITION</span></h1><div class="topRight"><span id="syncText" class="sync">Синхронизация…</span><div id="avatar" class="avatar">K</div><span id="userName"></span></div></header><div class="content">
 <section id="simpleGuide" class="guideHero">
-  <h3>Что делать в Travel Planner?</h3>
-  <div class="muted">Всё просто: сначала создайте поездку, затем добавляйте найденные варианты билетов, жильё и расходы.</div>
+  <h3>Планируйте поездки красиво и спокойно</h3>
+  <div class="muted">Все проекты семьи в одном месте: маршруты, билеты, отели, визы, документы и бюджет.</div>
   <div class="guideSteps">
     <div class="guideStep"><div class="stepNum">1</div><b>Создайте поездку</b><div class="muted">Название, даты и количество путешественников.</div></div>
     <div class="guideStep"><div class="stepNum">2</div><b>Найдите билеты</b><div class="muted">Откройте сайты авиакомпаний и сохраните найденные цены.</div></div>
@@ -245,7 +484,14 @@ body{background:
   <button class="actionCard" onclick="showView('budget')"><span>💰</span><b>Посмотреть бюджет</b><small>Оплачено и сколько осталось</small></button>
 </div>
 <div class="helpStrip">💡 <b>Подсказка:</b>&nbsp; не нужно заполнять всё сразу. Сначала создайте поездку, потом постепенно добавляйте найденные варианты.</div>
-<section id="hero" class="hero"><h2 id="heroTitle">Sri Lanka</h2><div id="heroMeta" class="meta"></div><div class="tag">✦ Luxury family itinerary</div></section><div class="grid4"><div class="metric"><label>Общий бюджет</label><strong id="mTotal">$0</strong><small id="mTotalAmd">≈ 0 ֏</small></div><div class="metric"><label>Оплачено</label><strong id="mPaid">$0</strong><small id="mPaidAmd">≈ 0 ֏</small></div><div class="metric"><label>Осталось</label><strong id="mLeft">$0</strong><small id="mLeftAmd">≈ 0 ֏</small></div><div class="metric"><label>На человека</label><strong id="mPerson">$0</strong><small id="mDay">в день $0</small></div></div><div class="tabs"><button class="tab active" onclick="showView('trips',this)">1. Поездки</button><button class="tab" onclick="showView('route',this)">2. Маршрут</button><button class="tab" onclick="showView('budget',this)">3. Бюджет</button><button class="tab" onclick="showView('calculator',this)">Калькулятор</button><button class="tab" onclick="showView('rates',this)">Курсы</button><button class="tab" onclick="showView('market',this)">4. Билеты и жильё</button></div><div class="layout"><section><div id="tripsView" class="card"><div class="helpStrip">Здесь находятся все ваши поездки. Нажмите на поездку, чтобы выбрать её. Кнопка ✏️ меняет название и даты.</div><div class="cardHead"><h3>Мои поездки</h3><button class="btn gold" onclick="openTrip()">＋ Поездка</button></div><div class="cardBody"><div id="tripList" class="tripCards"></div></div></div>
+<section id="hero" class="hero"><h2 id="heroTitle">Sri Lanka</h2><div id="heroMeta" class="meta"></div><div class="tag">✦ Luxury family itinerary</div></section><div class="grid4"><div class="metric"><label>Общий бюджет</label><strong id="mTotal">$0</strong><small id="mTotalAmd">≈ 0 ֏</small></div><div class="metric"><label>Оплачено</label><strong id="mPaid">$0</strong><small id="mPaidAmd">≈ 0 ֏</small></div><div class="metric"><label>Осталось</label><strong id="mLeft">$0</strong><small id="mLeftAmd">≈ 0 ֏</small></div><div class="metric"><label>На человека</label><strong id="mPerson">$0</strong><small id="mDay">в день $0</small></div></div>
+<div id="dashboardSnapshot" class="snapshotGrid">
+  <div class="snapshotCard"><span class="snapshotIcon">✈️</span><b>Билеты</b><strong id="snapFlights">Пока не добавлены</strong><small id="snapFlightsSub">Сохраните найденный вариант</small></div>
+  <div class="snapshotCard"><span class="snapshotIcon">🏨</span><b>Отели</b><strong id="snapHotels">Пока не добавлены</strong><small id="snapHotelsSub">Добавьте проживание по городам</small></div>
+  <div class="snapshotCard"><span class="snapshotIcon">🛂</span><b>Виза и въезд</b><strong id="snapVisa">Требует проверки</strong><small id="snapVisaSub">Сохраните официальный источник</small></div>
+  <div class="snapshotCard"><span class="snapshotIcon">📄</span><b>Документы</b><strong id="snapDocs">0 добавлено</strong><small id="snapDocsSub">Билеты, страховка, заметки</small></div>
+</div>
+<div class="tabs"><button class="tab active" onclick="showView('trips',this)">1. Поездки</button><button class="tab" onclick="showView('route',this)">2. Маршрут</button><button class="tab" onclick="showView('budget',this)">3. Бюджет</button><button class="tab" onclick="showView('calculator',this)">Калькулятор</button><button class="tab" onclick="showView('rates',this)">Курсы</button><button class="tab" onclick="showView('market',this)">4. Билеты и жильё</button></div><div class="layout"><section><div id="tripsView" class="card"><div class="helpStrip">Здесь находятся все ваши поездки. Нажмите на поездку, чтобы выбрать её. Кнопка ✏️ меняет название и даты.</div><div class="cardHead"><h3>Мои поездки</h3><button class="btn gold" onclick="openTrip()">＋ Поездка</button></div><div class="cardBody"><div id="tripList" class="tripCards"></div></div></div>
 <div id="projectView" class="hidden">
   <div class="projectBar">
     <button class="backBtn" onclick="showView('trips')">← Все поездки</button>
@@ -503,7 +749,47 @@ function trip(){return state?.trips?.find(x=>x.id===state.selected)||state?.trip
 function totals(t){let totalA=0,paidA=0;for(const s of t.segments||[]){const a=toAmd(s.cost,s.currency);totalA+=a;if(s.paid)paidA+=a}for(const e of t.expenses||[]){const a=toAmd(e.amount,e.currency);totalA+=a;if(e.paid)paidA+=a}
 for(const h of t.hotels||[]){const a=toAmd(h.total,h.currency);totalA+=a;if(h.paid)paidA+=a}
 return {totalA,paidA,leftA:totalA-paidA}}
-function render(){if(!state)return;let t=trip();if(!t)return;$('heroTitle').textContent=t.name;$('heroMeta').innerHTML=`<span>${t.start} → ${t.end}</span><span>${days(t)} дней</span><span>${t.travellers} человека</span>`;let z=totals(t),usd=fromAmd(z.totalA,'USD'),pUsd=fromAmd(z.paidA,'USD'),lUsd=fromAmd(z.leftA,'USD');$('mTotal').textContent=money(usd);$('mTotalAmd').textContent='≈ '+money(z.totalA,'AMD');$('mPaid').textContent=money(pUsd);$('mPaidAmd').textContent='≈ '+money(z.paidA,'AMD');$('mLeft').textContent=money(lUsd);$('mLeftAmd').textContent='≈ '+money(z.leftA,'AMD');$('mPerson').textContent=money(usd/Math.max(1,t.travellers));$('mDay').textContent='в день '+money(usd/days(t));$('tripList').innerHTML=state.trips.map(x=>{const q=totals(x);return `<div class="tripCard ${x.id===t.id?'active':''}" onclick="selectTrip('${x.id}')"><div><h4>${safe(x.name)}</h4><div class="muted">${safe(x.start)} → ${safe(x.end)} · ${x.travellers} чел.</div></div><div><div class="price">${money(fromAmd(q.totalA,'USD'))}</div><div class="tripActions"><button class="iconBtn" onclick="event.stopPropagation();editTrip('${x.id}')">✏️ Редактировать</button><button class="iconBtn" onclick="event.stopPropagation();duplicateTrip('${x.id}')">📋 Дублировать</button><button class="iconBtn" onclick="event.stopPropagation();deleteTrip('${x.id}')">🗑 Удалить</button></div></div></div>`}).join('');$('routeList').innerHTML=(t.segments||[]).map(s=>`<div class="segment"><div class="segDot">${icon(s.type)}</div><div class="segTop"><div><div class="segTitle">${s.from} → ${s.to}</div><div class="muted">${s.type}${s.ref?' · '+s.ref:''}</div></div><div style="text-align:right"><span class="pill ${s.paid?'paid':'planned'}">${s.paid?'Оплачено':'Планируется'}</span><div class="price">${money(s.cost,s.currency)}</div><div class="muted">≈ ${money(toAmd(s.cost,s.currency),'AMD')}</div></div></div><div class="segMeta"><div><label>Отправление</label>${String(s.depart||'').replace('T',' ')}</div><div><label>Прибытие</label>${String(s.arrive||'').replace('T',' ')}</div><div><label>Заметки</label>${s.notes||'—'}</div></div></div>`).join('')||'<div class="muted">Маршрут пока пуст.</div>';let rows=[];
+
+const TRAVEL_PHOTOS={
+  sri:'https://images.unsplash.com/photo-1581420455310-e069c4d4529e?auto=format&fit=crop&fm=jpg&q=82&w=2200',
+  paris:'https://images.unsplash.com/photo-1583265266785-aab9e443ee68?auto=format&fit=crop&fm=jpg&q=82&w=1800',
+  dubai:'https://images.unsplash.com/photo-1741369948561-534ac20a8898?auto=format&fit=crop&fm=jpg&q=82&w=1800',
+  italy:'https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&q=82&w=1800',
+  spain:'https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&q=82&w=1800',
+  greece:'https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&q=82&w=1800',
+  thailand:'https://images.unsplash.com/photo-1504214208698-ea1916a2195a?auto=format&fit=crop&q=82&w=1800',
+  default:'https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&q=82&w=1800'
+};
+function photoForTrip(t){
+ const s=((t?.country||'')+' '+(t?.city||'')+' '+(t?.name||'')).toLowerCase();
+ if(/sri|шри|colombo|коломбо|ceylon/.test(s))return TRAVEL_PHOTOS.sri;
+ if(/france|франц|paris|париж/.test(s))return TRAVEL_PHOTOS.paris;
+ if(/uae|dubai|дубай|emirat|эмират|abu dhabi|sharjah|шардж/.test(s))return TRAVEL_PHOTOS.dubai;
+ if(/ital|итал|rome|рим|milan|милан|venice|вене/.test(s))return TRAVEL_PHOTOS.italy;
+ if(/spain|испани|madrid|мадрид|barcelona|valencia|alicante/.test(s))return TRAVEL_PHOTOS.spain;
+ if(/greece|грец|athens|афин|santorini|crete|крит/.test(s))return TRAVEL_PHOTOS.greece;
+ if(/thai|тай|bangkok|phuket|пхукет/.test(s))return TRAVEL_PHOTOS.thailand;
+ return TRAVEL_PHOTOS.default;
+}
+function renderDashboardSnapshot(t){
+ const flights=(t.segments||[]).filter(s=>String(s.type||'').toLowerCase().includes('самол')||String(s.type||'').toLowerCase().includes('flight'));
+ const hotels=t.hotels||[];
+ const docs=t.docs||[];
+ const visa=t.visa||{};
+ if($('snapFlights')){
+   $('snapFlights').textContent=flights.length?flights.length+' перелёт'+(flights.length===1?'':'а'):'Пока не добавлены';
+   $('snapFlightsSub').textContent=flights.length?(flights[0].from||'')+' → '+(flights[0].to||''):'Сохраните найденный вариант';
+   $('snapHotels').textContent=hotels.length?hotels.length+' объект'+(hotels.length===1?'':'а'):'Пока не добавлены';
+   $('snapHotelsSub').textContent=hotels.length?(hotels[0].name||hotels[0].city||'Проживание'):'Добавьте проживание по городам';
+   const need=visa.need||visa.required||'';
+   $('snapVisa').textContent=need?String(need):'Требует проверки';
+   $('snapVisaSub').textContent=visa.status?('Статус: '+visa.status):'Сохраните официальный источник';
+   $('snapDocs').textContent=docs.length+' добавлено';
+   $('snapDocsSub').textContent=docs.length?(docs[0].title||docs[0].name||'Документы поездки'):'Билеты, страховка, заметки';
+ }
+}
+
+function render(){if(!state)return;let t=trip();if(!t)return;$('heroTitle').textContent=t.name;$('heroMeta').innerHTML=`<span>${t.start} → ${t.end}</span><span>${days(t)} дней</span><span>${t.travellers} человека</span>`;let z=totals(t),usd=fromAmd(z.totalA,'USD'),pUsd=fromAmd(z.paidA,'USD'),lUsd=fromAmd(z.leftA,'USD');$('mTotal').textContent=money(usd);$('mTotalAmd').textContent='≈ '+money(z.totalA,'AMD');$('mPaid').textContent=money(pUsd);$('mPaidAmd').textContent='≈ '+money(z.paidA,'AMD');$('mLeft').textContent=money(lUsd);$('mLeftAmd').textContent='≈ '+money(z.leftA,'AMD');$('mPerson').textContent=money(usd/Math.max(1,t.travellers));$('mDay').textContent='в день '+money(usd/days(t));$('hero').style.backgroundImage=`url("${photoForTrip(t)}")`;renderDashboardSnapshot(t);$('tripList').innerHTML=state.trips.map(x=>{const q=totals(x),ph=photoForTrip(x),d=days(x);return `<div class="tripCard ${x.id===t.id?'active':''}" onclick="selectTrip('${x.id}')"><div class="tripPhoto" style="background-image:url('${ph}')"><span class="tripStatus">${x.id===t.id?'✦ Текущая поездка':'В планах'}</span><div class="tripPhotoTitle">${safe(x.name)}</div></div><div class="tripCardBody"><div class="tripMetaRow"><span>📅 ${safe(x.start||'—')} → ${safe(x.end||'—')}</span><span>👥 ${x.travellers||1}</span><span>🌙 ${d} дн.</span></div><div class="tripMiniStats"><div><small>Бюджет</small><b>${money(fromAmd(q.totalA,'USD'))}</b></div><div><small>Направление</small><b>${safe(x.city||x.country||'Не указано')}</b></div></div><button class="tripOpen" onclick="event.stopPropagation();selectTrip('${x.id}')">Открыть проект →</button><div class="tripActions"><button class="iconBtn" onclick="event.stopPropagation();editTrip('${x.id}')">✏️ Изменить</button><button class="iconBtn" onclick="event.stopPropagation();duplicateTrip('${x.id}')">📋 Копия</button><button class="iconBtn" onclick="event.stopPropagation();deleteTrip('${x.id}')">🗑 Удалить</button></div></div></div>`}).join('');$('routeList').innerHTML=(t.segments||[]).map(s=>`<div class="segment"><div class="segDot">${icon(s.type)}</div><div class="segTop"><div><div class="segTitle">${s.from} → ${s.to}</div><div class="muted">${s.type}${s.ref?' · '+s.ref:''}</div></div><div style="text-align:right"><span class="pill ${s.paid?'paid':'planned'}">${s.paid?'Оплачено':'Планируется'}</span><div class="price">${money(s.cost,s.currency)}</div><div class="muted">≈ ${money(toAmd(s.cost,s.currency),'AMD')}</div></div></div><div class="segMeta"><div><label>Отправление</label>${String(s.depart||'').replace('T',' ')}</div><div><label>Прибытие</label>${String(s.arrive||'').replace('T',' ')}</div><div><label>Заметки</label>${s.notes||'—'}</div></div></div>`).join('')||'<div class="muted">Маршрут пока пуст.</div>';let rows=[];
 (t.segments||[]).filter(s=>Number(s.cost)>0).forEach(s=>rows.push({id:s.id,kind:'segment',cat:s.type,desc:s.from+' → '+s.to,a:s.cost,c:s.currency,paid:s.paid}));
 (t.expenses||[]).forEach(e=>rows.push({id:e.id,kind:'expense',cat:e.category,desc:e.desc,a:e.amount,c:e.currency,paid:e.paid}));
 $('budgetList').innerHTML=rows.map(r=>`<div class="row" style="align-items:center">
@@ -739,7 +1025,7 @@ function luxuryMetricIcons(){
  });
 }
 
-function renderProject(){
+function renderProject(){const __pt=trip();if(__pt&&$('projectView')){const __h=document.querySelector('.countryHero');if(__h)__h.style.backgroundImage=`url("${photoForTrip(__pt)}")`;} 
  const t=trip(); if(!t||!$('projectPanel'))return;
  $('projectTitle').textContent=t.name;
  $('projectMeta').innerHTML=`${safe(t.start)} → ${safe(t.end)} · ${days(t)} дней · ${t.travellers} чел.`;

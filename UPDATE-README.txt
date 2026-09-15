@@ -1,8 +1,16 @@
-Travel Planner v12 — Luxury Visual Refresh
-- Deep navy premium navigation
-- Gold accents and richer shadows
-- Luxury country/project hero
-- Premium cards, tabs and actions
-- Better visual hierarchy for budget, visa, route and search
-- Existing trip-project logic, visa, country/city suggestions and editing preserved
-Upload CONTENTS of this folder to repository root.
+Travel Planner v13 — Photo Luxury Dashboard
+
+MAIN CHANGES
+- Real travel photography on the main hero.
+- Photo project cards for all trips.
+- Photo project header when a trip is opened.
+- New quick status cards: flights, hotels, visa and documents.
+- Luxury navy / ivory / gold visual system.
+- All existing shared-state, budget, editing, visa, search and project features preserved.
+
+PHOTO SOURCES
+- Travel photos are loaded from Unsplash CDN.
+- The application still works if a photo is temporarily unavailable; only the decorative photo may not load.
+
+UPDATE
+Unzip and upload the CONTENTS of this folder to the repository root, replacing existing files.
