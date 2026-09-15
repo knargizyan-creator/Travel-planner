@@ -1,0 +1,31 @@
+CREATE TABLE IF NOT EXISTS app_users (
+  id BIGSERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  password_hash TEXT NOT NULL,
+  role TEXT NOT NULL CHECK (role IN ('admin','editor')),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS app_sessions (
+  id BIGSERIAL PRIMARY KEY,
+  user_id BIGINT NOT NULL REFERENCES app_users(id) ON DELETE CASCADE,
+  token_hash TEXT NOT NULL UNIQUE,
+  expires_at TIMESTAMPTZ NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS app_settings (
+  id INTEGER PRIMARY KEY DEFAULT 1 CHECK (id = 1),
+  invite_code TEXT,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+INSERT INTO app_settings(id, invite_code) VALUES (1, NULL) ON CONFLICT (id) DO NOTHING;
+
+CREATE TABLE IF NOT EXISTS app_state (
+  id INTEGER PRIMARY KEY DEFAULT 1 CHECK (id = 1),
+  data JSONB NOT NULL,
+  version BIGINT NOT NULL DEFAULT 1,
+  updated_by BIGINT REFERENCES app_users(id) ON DELETE SET NULL,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
