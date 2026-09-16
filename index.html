@@ -1095,6 +1095,92 @@ body{background:
   .labelledForm .full{grid-column:auto!important}
 }
 
+
+/* ===== V16 ROUTE + EXPENSES REDESIGN ===== */
+.routePage,.expensePage{overflow:visible!important}
+.routePageHead,.expensePageHead{align-items:center}
+.routeSubtitle,.expenseSubtitle{margin-top:3px;font-size:11px}
+.routeTimeline{padding:16px 18px!important}
+.routeStep{display:grid;grid-template-columns:42px 1fr;gap:8px;position:relative}
+.routeRail{position:relative;display:flex;justify-content:center}
+.routeDot{position:relative;z-index:2;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#eef5f7;font-size:18px}
+.routeLine{position:absolute;top:34px;bottom:-10px;width:2px;background:#dbe4e8}
+.routeStepCard{border:1px solid #e5ddd1;border-radius:15px;padding:13px 14px;margin-bottom:12px;background:#fff;box-shadow:0 7px 20px rgba(20,41,60,.035)}
+.routeStepTop{display:flex;justify-content:space-between;gap:12px}
+.routeStepTitle{font-size:16px;font-weight:900;color:#132b42}
+.routeStepCarrier{font-size:11px;color:#758493;margin-top:3px}
+.routeStepPrice{font-size:18px;font-weight:900;white-space:nowrap;color:#102a42}
+.routeTimes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}
+.routeTimes>div{padding:9px 10px;border-radius:10px;background:#f8f6f2}
+.routeTimes small{display:block;color:#7b8995;font-size:9px;text-transform:uppercase;letter-spacing:.05em}
+.routeTimes b{display:block;margin-top:3px;font-size:12px}
+.routeNote{margin-top:8px;padding:8px 10px;border-radius:9px;background:#faf7f1;color:#586776;font-size:11px}
+.routeActions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.routeActions .btn{padding:7px 9px;font-size:10px}
+.emptyRoute{display:grid;place-items:center;text-align:center;gap:7px;padding:34px 15px;color:#73808d}
+.emptyRoute>span{font-size:34px}.emptyRoute b{font-size:17px;color:#173148}.emptyRoute small{max-width:390px}
+
+.expenseSummary{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:14px 16px 5px}
+.expenseSummaryCard{background:#fff;border:1px solid #e5ddd1;border-radius:14px;padding:12px;box-shadow:0 6px 18px rgba(20,41,60,.035)}
+.expenseSummaryCard small{display:block;color:#768492;font-size:10px}
+.expenseSummaryCard strong{display:block;font-size:21px;margin:4px 0 2px;color:#102a42}
+.expenseSummaryCard span{font-size:9px;color:#8b96a0}
+.expenseSummaryCard.paid{background:#f2fbf7}.expenseSummaryCard.left{background:#fff9ef}
+.expenseGroups{display:grid;gap:8px;padding:10px 16px 16px!important}
+.expenseGroup{border:1px solid #e5ddd1;border-radius:14px;background:#fff;overflow:hidden}
+.expenseGroupHead{width:100%;border:0;background:#fff;display:grid;grid-template-columns:38px 1fr auto 20px;gap:9px;align-items:center;text-align:left;padding:11px 12px;color:#173148;cursor:pointer}
+.expenseGroupIcon{width:36px;height:36px;border-radius:11px;background:#f1f5f6;display:grid;place-items:center;font-size:18px}
+.expenseGroupName{font-weight:900;font-size:13px}.expenseGroupName small{display:block;font-weight:500;font-size:9px;color:#83909b;margin-top:2px}
+.expenseGroupAmount{text-align:right;font-weight:900;font-size:14px}.expenseGroupAmount small{display:block;color:#1c8767;font-size:8px;font-weight:700;margin-top:2px}
+.expenseChevron{color:#8a949d}
+.expenseDetails{display:none;border-top:1px solid #eee7dc;background:#fcfaf7;padding:5px 11px}
+.expenseDetails.open{display:block}
+.expenseDetail{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #eee7dc}
+.expenseDetail:last-child{border-bottom:0}
+.expenseDetail b{font-size:11px}.expenseDetail small{display:block;color:#84909a;font-size:8px;margin-top:2px}
+.expenseDetailRight{text-align:right}.expenseDetailRight>button{border:0;background:transparent;padding:4px;font-size:12px}.expenseDetailRight .del{color:#b84b4b}
+.expenseEmpty{padding:11px 0;color:#8a959e;font-size:10px}
+
+@media(max-width:760px){
+  #routeView,#budgetView{background:transparent!important;border:0!important;box-shadow:none!important}
+  .routePageHead,.expensePageHead{
+    padding:8px 2px 12px!important;
+    border:0!important;
+    align-items:flex-start!important;
+  }
+  .routePageHead h3,.expensePageHead h3{font-size:23px!important;line-height:1.05}
+  .routePageHead .btn,.expensePageHead .btn{font-size:11px!important;padding:9px 11px!important;min-height:40px}
+  .routeSubtitle,.expenseSubtitle{font-size:10px}
+  .routeTimeline{padding:0!important}
+  .routeStep{grid-template-columns:34px 1fr;gap:6px}
+  .routeDot{width:30px;height:30px;font-size:16px}
+  .routeLine{top:30px;bottom:-9px}
+  .routeStepCard{padding:11px;margin-bottom:9px;border-radius:14px}
+  .routeStepTop{align-items:flex-start}
+  .routeStepTitle{font-size:15px;line-height:1.15}
+  .routeStepCarrier{font-size:10px}
+  .routeStepPrice{font-size:16px}
+  .routeTimes{grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+  .routeTimes>div{padding:8px}
+  .routeTimes small{font-size:8px}.routeTimes b{font-size:11px}
+  .routeNote{font-size:10px;line-height:1.35}
+  .routeActions{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .routeActions .routeLinkBtn{grid-column:1/-1}
+  .routeActions .btn{min-height:36px}
+  .emptyRoute{background:#fff;border:1px solid #e5ddd1;border-radius:15px}
+
+  .expenseSummary{display:flex;overflow-x:auto;gap:7px;padding:0 0 9px;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .expenseSummary::-webkit-scrollbar{display:none}
+  .expenseSummaryCard{flex:0 0 68%;scroll-snap-align:start;padding:12px;border-radius:14px}
+  .expenseSummaryCard strong{font-size:22px}
+  .expenseGroups{padding:0!important;gap:7px}
+  .expenseGroup{border-radius:13px}
+  .expenseGroupHead{grid-template-columns:36px 1fr auto 16px;padding:10px}
+  .expenseGroupIcon{width:34px;height:34px}
+  .expenseGroupName{font-size:12px}.expenseGroupAmount{font-size:13px}
+  .expenseDetail{padding:8px 0}
+}
+
 </style></head><body data-view="trips">
 <div id="auth" class="auth"><div class="authBox"><div class="authBrand"><img src="icon-192.png"><h2>Travel Planner</h2><div class="muted">Private family travel workspace</div></div><div id="setupHint" class="inviteBox hidden"></div><div class="authTabs"><button id="loginTab" class="active" onclick="authMode('login')">Войти</button><button id="registerTab" onclick="authMode('register')">Регистрация</button></div><div id="loginForm" class="authForm"><input id="loginEmail" type="email" placeholder="Email"><input id="loginPass" type="password" placeholder="Пароль"><button class="btn gold" onclick="login()">Войти</button></div><div id="registerForm" class="authForm hidden"><input id="regName" placeholder="Имя"><input id="regEmail" type="email" placeholder="Email"><input id="regPass" type="password" placeholder="Пароль — минимум 6 символов"><input id="regInvite" class="hidden" placeholder="Код приглашения"><button class="btn gold" onclick="registerUser()">Создать аккаунт</button></div></div></div>
 <div id="app" class="shell hidden"><aside class="side"><div class="brand"><img src="icon-192.png"><div><b>Travel Planner</b><small>Private Family Edition</small></div></div><button class="navBtn active" onclick="showView('trips',this)">🧳 Поездки</button><button class="navBtn" onclick="openTrip()">＋ Создать поездку</button><button class="navBtn" onclick="showView('budget',this)">💰 Расходы и бюджет</button><div class="navTitle">Инструменты</div><button class="navBtn" onclick="showView('calculator',this)">🧮 Калькулятор валют</button><button class="navBtn" onclick="showView('rates',this)">💱 Курсы валют</button><button class="navBtn" onclick="showView('market',this)">🔎 Поиск и сравнение</button><button class="navBtn" onclick="openSeg()">🧭 Добавить перелёт / отель</button><button class="navBtn" onclick="openExpense()">💳 Добавить расход</button><div class="navTitle">Аккаунт</div><button class="navBtn" onclick="showAccount()">👥 Аккаунт и пользователи</button><button class="navBtn" onclick="logout()">↪ Выйти</button></aside><main class="main"><header class="top"><h1 id="pageTitle">Travel Planner <span style="font-size:11px;font-family:Arial,sans-serif;font-weight:500;opacity:.68;margin-left:6px">PRIVATE FAMILY EDITION</span></h1><div class="topRight"><span id="syncText" class="sync">Синхронизация…</span><div id="avatar" class="avatar">K</div><span id="userName"></span></div></header><div class="content">
@@ -1175,7 +1261,14 @@ body{background:
 
   <div id="projectPanel"></div>
 </div>
-<div id="routeView" class="card hidden"><div class="cardHead"><h3>2. Маршрут</h3><button class="btn soft" onclick="openSeg()">＋ Сегмент</button></div><div id="routeList" class="cardBody"></div></div><div id="budgetView" class="card hidden" style="overflow:hidden"><div class="cardHead"><h3>Предварительный расчёт расходов</h3><button class="btn soft" onclick="openExpense()">＋ Расход</button></div><div id="budgetList" class="cardBody"></div></div><div id="calculatorView" class="card calculator hidden"><div class="cardHead" style="border-color:#ffffff1a"><h3>Калькулятор валют поездки</h3></div><div class="cardBody"><div class="calcDisplay"><small>Эквивалент в AMD</small><strong id="calcAmd">0 ֏</strong></div><div class="calcGrid"><input id="calcAmount" inputmode="decimal" type="number" value="2800" oninput="calc()"><select id="calcCurrency" onchange="calc()"><option>USD</option><option>EUR</option><option>AMD</option><option>GBP</option><option>AED</option><option>RUB</option></select><input id="calcPeople" type="number" value="4" min="1" oninput="calc()"><select id="calcType" onchange="calc()"><option value="trip">Общая сумма</option><option value="person">Цена на человека</option></select></div><div id="calcResults" class="calcResults"></div></div></div><div id="ratesView" class="card hidden"><div class="cardHead"><h3>Курсы валют ЦБ РА</h3><button class="btn soft" onclick="loadRates(true)">Обновить</button></div><div class="cardBody"><div id="rateDate" class="muted"></div><div id="ratesList"></div></div></div>
+<div id="routeView" class="card hidden routePage">
+      <div class="cardHead routePageHead"><div><h3>Маршрут поездки</h3><div class="muted routeSubtitle">Куда и как мы едем</div></div><button class="btn gold" onclick="openSeg()">＋ Добавить</button></div>
+      <div id="routeList" class="cardBody routeTimeline"></div>
+    </div><div id="budgetView" class="card hidden expensePage">
+      <div class="cardHead expensePageHead"><div><h3>Предварительный расчёт расходов</h3><div class="muted expenseSubtitle">Сколько ориентировочно стоит поездка</div></div><button class="btn gold" onclick="openExpense()">＋ Добавить расход</button></div>
+      <div id="expenseSummary" class="expenseSummary"></div>
+      <div id="budgetList" class="cardBody expenseGroups"></div>
+    </div><div id="calculatorView" class="card calculator hidden"><div class="cardHead" style="border-color:#ffffff1a"><h3>Калькулятор валют поездки</h3></div><div class="cardBody"><div class="calcDisplay"><small>Эквивалент в AMD</small><strong id="calcAmd">0 ֏</strong></div><div class="calcGrid"><input id="calcAmount" inputmode="decimal" type="number" value="2800" oninput="calc()"><select id="calcCurrency" onchange="calc()"><option>USD</option><option>EUR</option><option>AMD</option><option>GBP</option><option>AED</option><option>RUB</option></select><input id="calcPeople" type="number" value="4" min="1" oninput="calc()"><select id="calcType" onchange="calc()"><option value="trip">Общая сумма</option><option value="person">Цена на человека</option></select></div><div id="calcResults" class="calcResults"></div></div></div><div id="ratesView" class="card hidden"><div class="cardHead"><h3>Курсы валют ЦБ РА</h3><button class="btn soft" onclick="loadRates(true)">Обновить</button></div><div class="cardBody"><div id="rateDate" class="muted"></div><div id="ratesList"></div></div></div>
 <div id="marketView" class="hidden"><div class="helpStrip">Как пользоваться: ① укажите маршрут и даты → ② откройте сайт авиакомпании → ③ найдите цену → ④ вернитесь сюда и нажмите «Сохранить найденную цену».</div>
   <div class="marketGrid">
     <div>
@@ -1434,6 +1527,62 @@ function transportSummary(t){
  const hotelA=(t.hotels||[]).reduce((a,h)=>a+toAmd(h.total,h.currency),0);
  return {flights,ground,flightA,groundA,hotelA};
 }
+
+function fmtDateTime(v){
+ if(!v)return '';
+ try{
+   const d=new Date(v);
+   if(Number.isNaN(d.getTime()))return String(v).replace('T',' ');
+   return d.toLocaleString('ru-RU',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}).replace(',','');
+ }catch(_){return String(v).replace('T',' ')}
+}
+function routeTitle(s){
+ const a=String(s.from||'').trim(),b=String(s.to||'').trim();
+ return a&&b?`${a} → ${b}`:(a||b||'Маршрут не указан');
+}
+function extractUrl(v){
+ const m=String(v||'').match(/https?:\/\/[^\s]+/i);return m?m[0]:'';
+}
+function cleanNotes(v){
+ return String(v||'').replace(/https?:\/\/[^\s]+/ig,'').replace(/[·\s]+$/,'').trim();
+}
+function expenseGroupData(t){
+ const groups={
+  flights:{icon:'✈️',name:'Авиабилеты',items:[]},
+  hotels:{icon:'🏨',name:'Отели',items:[]},
+  transport:{icon:'🚕',name:'Транспорт',items:[]},
+  food:{icon:'🍽️',name:'Питание',items:[]},
+  fun:{icon:'🎟️',name:'Развлечения',items:[]},
+  insurance:{icon:'🛡️',name:'Страховка',items:[]},
+  visa:{icon:'🛂',name:'Виза',items:[]},
+  other:{icon:'➕',name:'Другое',items:[]}
+ };
+ (t.segments||[]).forEach(s=>{
+   const isFlight=String(s.type||'').toLowerCase()==='самолёт';
+   const g=isFlight?groups.flights:groups.transport;
+   g.items.push({id:s.id,kind:'segment',label:routeTitle(s),sub:s.type+(s.ref?' · '+s.ref:''),amount:Number(s.cost||0),currency:s.currency||'USD',paid:!!s.paid});
+ });
+ (t.hotels||[]).forEach(h=>groups.hotels.items.push({id:h.id,kind:'hotel',label:h.name||h.city||'Отель',sub:h.city||'',amount:Number(h.total||0),currency:h.currency||'USD',paid:!!h.paid}));
+ (t.expenses||[]).forEach(e=>{
+   const c=String(e.category||'').toLowerCase();
+   let g=groups.other;
+   if(/flight|авиа|билет/.test(c))g=groups.flights;
+   else if(/hotel|отел|lodg|stay/.test(c))g=groups.hotels;
+   else if(/transport|транс|taxi|такси|car/.test(c))g=groups.transport;
+   else if(/food|питан|restaurant|еда/.test(c))g=groups.food;
+   else if(/fun|entertain|развлеч|excursion|экскурс/.test(c))g=groups.fun;
+   else if(/insurance|страх/.test(c))g=groups.insurance;
+   else if(/visa|виз/.test(c))g=groups.visa;
+   g.items.push({id:e.id,kind:'expense',label:e.desc||e.category||'Расход',sub:e.category||'',amount:Number(e.amount||0),currency:e.currency||'USD',paid:!!e.paid});
+ });
+ return groups;
+}
+function groupTotalA(g){return g.items.reduce((a,x)=>a+toAmd(x.amount,x.currency),0)}
+function groupPaidA(g){return g.items.reduce((a,x)=>a+(x.paid?toAmd(x.amount,x.currency):0),0)}
+function toggleExpenseGroup(k){
+ const el=document.querySelector(`[data-expense-details="${k}"]`);
+ if(el)el.classList.toggle('open');
+}
 function render(){if(!state)return;let t=trip();if(!t)return;
  let z=totals(t),usd=fromAmd(z.totalA,'USD'),pUsd=fromAmd(z.paidA,'USD'),lUsd=fromAmd(z.leftA,'USD');
  if($('heroTitle'))$('heroTitle').textContent=t.name;
@@ -1467,12 +1616,51 @@ function render(){if(!state)return;let t=trip();if(!t)return;
    </div>`
  }).join('');
 
- $('routeList').innerHTML=(t.segments||[]).map(s=>`<div class="segment"><div class="segDot">${icon(s.type)}</div><div class="segTop"><div><div class="segTitle">${s.from} → ${s.to}</div><div class="muted">${s.type}${s.ref?' · '+s.ref:''}</div></div><div style="text-align:right"><span class="pill ${s.paid?'paid':'planned'}">${s.paid?'Оплачено':'Планируется'}</span><div class="price">${money(s.cost,s.currency)}</div><div class="muted">≈ ${money(toAmd(s.cost,s.currency),'AMD')}</div></div></div><div class="segMeta"><div><label>Дата и время отправления</label>${String(s.depart||'').replace('T',' ')}</div><div><label>Дата и время прибытия</label>${String(s.arrive||'').replace('T',' ')}</div><div><label>Заметки</label>${s.notes||'—'}</div></div></div>`).join('')||'<div class="muted">Маршрут пока пуст.</div>';
+ $('routeList').innerHTML=(t.segments||[]).map((s,i)=>{
+   const url=extractUrl(s.notes),note=cleanNotes(s.notes),dep=fmtDateTime(s.depart),arr=fmtDateTime(s.arrive);
+   return `<div class="routeStep">
+     <div class="routeRail"><span class="routeDot">${icon(s.type)}</span>${i<(t.segments||[]).length-1?'<span class="routeLine"></span>':''}</div>
+     <div class="routeStepCard">
+       <div class="routeStepTop">
+         <div class="routeStepMain"><div class="routeStepTitle">${safe(routeTitle(s))}</div><div class="routeStepCarrier">${safe(s.type)}${s.ref?' · '+safe(s.ref):''}</div></div>
+         <div class="routeStepPrice">${Number(s.cost)>0?money(s.cost,s.currency):''}</div>
+       </div>
+       <div class="routeTimes">
+         ${dep?`<div><small>Отправление</small><b>${safe(dep)}</b></div>`:''}
+         ${arr?`<div><small>Прибытие</small><b>${safe(arr)}</b></div>`:''}
+       </div>
+       ${note?`<div class="routeNote">${safe(note)}</div>`:''}
+       <div class="routeActions">
+         ${url?`<button class="btn soft routeLinkBtn" onclick="window.open('${safe(url)}','_blank','noopener')">🔗 Открыть билет / сайт</button>`:''}
+         <button class="btn soft" onclick="editSeg('${s.id}')">✏️ Редактировать</button>
+         <button class="btn danger" onclick="deleteSeg('${s.id}')">Удалить</button>
+       </div>
+     </div>
+   </div>`
+ }).join('')||`<div class="emptyRoute"><span>🧭</span><b>Маршрут пока пуст</b><small>Добавьте самолёт, поезд, такси, трансфер или другой участок пути.</small><button class="btn gold" onclick="openSeg()">＋ Добавить первый сегмент</button></div>`;
 
- let rows=[];
- (t.segments||[]).filter(s=>Number(s.cost)>0).forEach(s=>rows.push({id:s.id,kind:'segment',cat:s.type,desc:s.from+' → '+s.to,a:s.cost,c:s.currency,paid:s.paid}));
- (t.expenses||[]).forEach(e=>rows.push({id:e.id,kind:'expense',cat:e.category,desc:e.desc,a:e.amount,c:e.currency,paid:e.paid}));
- $('budgetList').innerHTML=rows.map(r=>`<div class="row" style="align-items:center"><div><b>${safe(r.cat)}</b><div class="muted">${safe(r.desc||'')} · ${r.paid?'оплачено':'не оплачено'}</div><div class="tripActions" style="justify-content:flex-start">${r.kind==='expense'?`<button class="btn soft" style="padding:7px 10px" onclick="editExp('${r.id}')">✏️ Редактировать</button><button class="btn danger" style="padding:7px 10px" onclick="deleteExp('${r.id}')">🗑 Удалить</button>`:`<button class="btn soft" style="padding:7px 10px" onclick="editSeg('${r.id}')">✏️ Редактировать</button><button class="btn danger" style="padding:7px 10px" onclick="deleteSeg('${r.id}')">🗑 Удалить</button>`}</div></div><div style="text-align:right"><b>${money(r.a,r.c)}</b><div class="muted">≈ ${money(toAmd(r.a,r.c),'AMD')}</div></div></div>`).join('')||'<div class="muted">Расходов пока нет.</div>';
+ const ez=totals(t),groups=expenseGroupData(t);
+ if($('expenseSummary'))$('expenseSummary').innerHTML=`
+   <div class="expenseSummaryCard"><small>Предварительно рассчитано</small><strong>${money(fromAmd(ez.totalA,'USD'))}</strong><span>≈ ${money(ez.totalA,'AMD')}</span></div>
+   <div class="expenseSummaryCard paid"><small>Уже оплачено</small><strong>${money(fromAmd(ez.paidA,'USD'))}</strong><span>≈ ${money(ez.paidA,'AMD')}</span></div>
+   <div class="expenseSummaryCard left"><small>Осталось оплатить</small><strong>${money(fromAmd(ez.leftA,'USD'))}</strong><span>≈ ${money(ez.leftA,'AMD')}</span></div>`;
+ const order=['flights','hotels','transport','food','fun','insurance','visa','other'];
+ $('budgetList').innerHTML=order.map(k=>{
+   const g=groups[k],total=groupTotalA(g),paid=groupPaidA(g);
+   const detail=g.items.length?g.items.map(x=>`<div class="expenseDetail">
+     <div><b>${safe(x.label)}</b><small>${safe(x.sub||'')}${x.paid?' · оплачено':' · не оплачено'}</small></div>
+     <div class="expenseDetailRight"><b>${money(x.amount,x.currency)}</b>${x.kind==='expense'?`<button onclick="editExp('${x.id}')">✏️</button><button class="del" onclick="deleteExp('${x.id}')">🗑</button>`:x.kind==='segment'?`<button onclick="editSeg('${x.id}')">✏️</button><button class="del" onclick="deleteSeg('${x.id}')">🗑</button>`:''}</div>
+   </div>`).join(''):'<div class="expenseEmpty">Пока нет расходов в этой категории.</div>';
+   return `<div class="expenseGroup">
+     <button class="expenseGroupHead" onclick="toggleExpenseGroup('${k}')">
+       <span class="expenseGroupIcon">${g.icon}</span>
+       <span class="expenseGroupName">${g.name}<small>${g.items.length?g.items.length+' поз.':'Нет расходов'}</small></span>
+       <span class="expenseGroupAmount">${total?money(fromAmd(total,'USD')):'—'}${paid?`<small>оплачено ${money(fromAmd(paid,'USD'))}</small>`:''}</span>
+       <span class="expenseChevron">⌄</span>
+     </button>
+     <div class="expenseDetails" data-expense-details="${k}">${detail}</div>
+   </div>`
+ }).join('');
  calc();renderMarket();if(!$('projectView').classList.contains('hidden'))renderProject();luxuryMetricIcons()
 }
 

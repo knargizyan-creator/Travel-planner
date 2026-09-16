@@ -1,54 +1,27 @@
-Travel Planner v15 — Compact Trips / Feedback Update
+Travel Planner v16 — Route & Expenses Redesign
 
-Implemented from the latest review:
+Changes based on the mobile review:
 
-1. COUNTRY → CITY
-- Country is now a real dropdown.
-- City is now a dependent dropdown.
-- Choose France and the city list shows Paris, Lyon, Marseille, Nice, Beauvais.
-- The same logic is used for the other curated destinations.
+ROUTE
+- Route is now a vertical travel timeline.
+- Each transport segment is compact: route, operator, departure, arrival, cost.
+- Raw URLs are no longer shown inside Notes.
+- If a URL exists in Notes, it becomes a clean "Open ticket / website" button.
+- Edit and Delete are directly available.
+- Empty route has a clear "Add first segment" state.
 
-2. CLEAR DATE LABELS
-- New trip: "Дата вылета" and "Дата возвращения".
-- Route segment: "Дата и время вылета / отправления" and "Дата и время прилёта / прибытия".
+EXPENSES
+- Expenses are no longer displayed like duplicate route cards.
+- Top summary: Preliminary total / Paid / Left to pay.
+- Costs are grouped by category:
+  Flights, Hotels, Transport, Food, Entertainment, Insurance, Visa, Other.
+- Tap a category to expand its underlying items.
+- Route segment and hotel costs are still included automatically in the total.
+- Manual expenses remain editable/deletable.
+- Main action is now "Add expense".
 
-3. BUDGET WORDING
-- Main user-facing wording changed to "Предварительный расчёт расходов" / "Расходы".
-- The optional target amount is called "Планируемая сумма расходов".
-
-4. COMPACT TRIP CARDS
-- Removed the oversized selected-trip hero from the home screen.
-- Desktop shows several trips side-by-side.
-- Mobile shows compact trip cards one under another.
-- Each card has photo, dates, people, flight, hotels, transport, visa and preliminary expense estimate.
-- Icons and amounts follow the approved visual concept.
-
-5. TERMINOLOGY
-- User-facing "project" wording has been replaced with "поездка".
-- The user chooses the trip name.
-
-6. ROUTE SEGMENT TYPES
-Each is now separate:
-- Самолёт
-- Поезд
-- Лайнер
-- Паром
-- Автобус
-- Автомобиль
-- Такси
-- Трансфер
-- Метро
-- Другое
-
-7. VISA
-- Visa page now has only: "Нужна ли виза? Да / Нет".
-- Removed passport, cost, processing time, checked date, source link and other fields.
-
-8. DOCUMENTS
-- Documents section removed from the interface.
-- Replaced with a simple "Заметки" text area for each trip.
-
-Existing shared Netlify database, two-user synchronization, search, hotels, routes, expenses, calculator and rates remain in place.
+The design is optimized for iPhone while keeping desktop usable.
+All current database/synchronization features are preserved.
 
 UPDATE:
-Unzip and upload the CONTENTS of this folder to the GitHub repository root, replacing existing files.
+Unzip and upload the CONTENTS to the GitHub repository root, replacing the existing files.
